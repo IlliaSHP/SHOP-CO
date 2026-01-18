@@ -53,6 +53,9 @@ let bodyLock = (delay = 500) => {
     }, delay);
   }
 };
+function getDigFormat(item, sepp = " ") {
+  return item.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, `$1${sepp}`);
+}
 function uniqArray(array) {
   return array.filter((item, index, self) => self.indexOf(item) === index);
 }
@@ -60,5 +63,6 @@ addTouchAttr();
 export {
   bodyLockStatus as a,
   bodyLockToggle as b,
+  getDigFormat as g,
   uniqArray as u
 };

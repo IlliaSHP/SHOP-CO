@@ -1,4 +1,4 @@
-import { b as bodyLockToggle, a as bodyLockStatus, u as uniqArray } from "./common.min.js";
+import { b as bodyLockToggle, a as bodyLockStatus, g as getDigFormat, u as uniqArray } from "./common.min.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) return;
@@ -46,17 +46,24 @@ document.addEventListener("DOMContentLoaded", function() {
   if (dropdown) {
     const dropdownBtn = dropdown.querySelector(".menu__link");
     if (dropdownBtn) {
+      let touchDevice = false;
+      dropdown.addEventListener("touchstart", function() {
+        touchDevice = true;
+      }, { once: true });
       dropdownBtn.addEventListener("click", function(e) {
-        e.preventDefault();
         e.stopPropagation();
         const isExpanded = dropdown.getAttribute("aria-expanded") === "true";
         dropdown.setAttribute("aria-expanded", isExpanded ? "false" : "true");
       });
       dropdown.addEventListener("mouseenter", function() {
-        this.setAttribute("aria-expanded", "true");
+        if (!touchDevice) {
+          this.setAttribute("aria-expanded", "true");
+        }
       });
       dropdown.addEventListener("mouseleave", function() {
-        this.setAttribute("aria-expanded", "false");
+        if (!touchDevice) {
+          this.setAttribute("aria-expanded", "false");
+        }
       });
       dropdown.addEventListener("focusout", function(e) {
         if (!dropdown.contains(e.relatedTarget)) {
@@ -188,6 +195,60 @@ function headerScroll() {
   });
 }
 document.querySelector("[data-fls-header-scroll]") ? window.addEventListener("load", headerScroll) : null;
+function digitsCounter() {
+  const animatedCounters = /* @__PURE__ */ new Set();
+  function digitsCountersInit(digitsCountersItems) {
+    let digitsCounters = digitsCountersItems ? digitsCountersItems : document.querySelectorAll("[data-fls-digcounter]");
+    if (digitsCounters.length) {
+      digitsCounters.forEach((digitsCounter2) => {
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-once") && animatedCounters.has(digitsCounter2)) return;
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-go")) return;
+        digitsCounter2.setAttribute("data-fls-digcounter-go", "");
+        const originalValue = digitsCounter2.innerHTML.trim();
+        digitsCounter2.dataset.flsDigcounter = originalValue;
+        const format = originalValue.includes(",") ? "," : " ";
+        if (!digitsCounter2.dataset.flsDigcounterFormat) {
+          digitsCounter2.dataset.flsDigcounterFormat = format;
+        }
+        digitsCounter2.innerHTML = `0`;
+        digitsCountersAnimate(digitsCounter2);
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-once")) {
+          animatedCounters.add(digitsCounter2);
+        }
+      });
+    }
+  }
+  function digitsCountersAnimate(digitsCounter2) {
+    let startTimestamp = null;
+    const duration = parseFloat(digitsCounter2.dataset.flsDigcounterSpeed) ? parseFloat(digitsCounter2.dataset.flsDigcounterSpeed) : 1e3;
+    const originalValue = digitsCounter2.dataset.flsDigcounter;
+    const startValue = parseFloat(originalValue.replace(/,/g, "").replace(/\s/g, ""));
+    const format = digitsCounter2.dataset.flsDigcounterFormat ? digitsCounter2.dataset.flsDigcounterFormat : ",";
+    const startPosition = 0;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const value = Math.floor(progress * (startPosition + startValue));
+      digitsCounter2.innerHTML = getDigFormat(value, format);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        digitsCounter2.innerHTML = getDigFormat(startValue, format);
+        digitsCounter2.removeAttribute("data-fls-digcounter-go");
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+  function digitsCounterAction(e) {
+    const entry = e.detail.entry;
+    const targetElement = entry.target;
+    if (targetElement.querySelectorAll("[data-fls-digcounter]").length && !targetElement.querySelectorAll("[data-fls-watcher]").length && entry.isIntersecting) {
+      digitsCountersInit(targetElement.querySelectorAll("[data-fls-digcounter]"));
+    }
+  }
+  document.addEventListener("watcherCallback", digitsCounterAction);
+}
+document.querySelector("[data-fls-digcounter]") ? window.addEventListener("load", digitsCounter) : null;
 class ScrollWatcher {
   constructor(props) {
     let defaultConfig = {
