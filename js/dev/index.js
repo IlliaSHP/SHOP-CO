@@ -83,9 +83,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (sitetopbar && closeBtn) {
       closeBtn.addEventListener("click", function(e) {
         e.preventDefault();
-        sitetopbar.classList.add("site-topbar--anim");
+        html.setAttribute("site-topbar-anim", "");
+        document.documentElement.style.setProperty("--alertBannerHeight", "0px");
         setTimeout(() => {
-          document.documentElement.style.setProperty("--alertBannerHeight", "0px");
           sitetopbar.classList.add("site-topbar--hidden");
         }, 300);
       });
@@ -203,22 +203,85 @@ function digitsCounter() {
       digitsCounters.forEach((digitsCounter2) => {
         if (digitsCounter2.hasAttribute("data-fls-digcounter-once") && animatedCounters.has(digitsCounter2)) return;
         if (digitsCounter2.hasAttribute("data-fls-digcounter-go")) return;
-        digitsCounter2.setAttribute("data-fls-digcounter-go", "");
         const originalValue = digitsCounter2.innerHTML.trim();
-        digitsCounter2.dataset.flsDigcounter = originalValue;
-        const format = originalValue.includes(",") ? "," : " ";
+        let suffix = null;
+        let numberValue = originalValue;
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-suffix")) {
+          suffix = digitsCounter2.getAttribute("data-fls-digcounter-suffix");
+          if (originalValue.endsWith(suffix)) {
+            numberValue = originalValue.slice(0, -suffix.length).trim();
+          }
+        }
+        digitsCounter2.dataset.flsDigcounter = numberValue;
+        const format = numberValue.includes(",") ? "," : " ";
         if (!digitsCounter2.dataset.flsDigcounterFormat) {
           digitsCounter2.dataset.flsDigcounterFormat = format;
         }
-        digitsCounter2.innerHTML = `0`;
-        digitsCountersAnimate(digitsCounter2);
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-stabilization")) {
+          stabilizeCounter(digitsCounter2, () => {
+            setupCounterContent(digitsCounter2, suffix);
+            digitsCounter2.setAttribute("data-fls-digcounter-go", "");
+            digitsCountersAnimate(digitsCounter2, suffix);
+          });
+        } else {
+          setupCounterContent(digitsCounter2, suffix);
+          digitsCounter2.setAttribute("data-fls-digcounter-go", "");
+          digitsCountersAnimate(digitsCounter2, suffix);
+        }
         if (digitsCounter2.hasAttribute("data-fls-digcounter-once")) {
           animatedCounters.add(digitsCounter2);
         }
       });
     }
   }
-  function digitsCountersAnimate(digitsCounter2) {
+  function setupCounterContent(digitsCounter2, suffix) {
+    if (suffix) {
+      digitsCounter2.innerHTML = `0${suffix}`;
+    } else {
+      digitsCounter2.innerHTML = `0`;
+    }
+  }
+  function stabilizeCounter(digitsCounter2, callback) {
+    let targetElement = digitsCounter2;
+    if (digitsCounter2.hasAttribute("data-fls-digcounter-stabilize-target")) {
+      const selector = digitsCounter2.getAttribute("data-fls-digcounter-stabilize-target");
+      const customTarget = digitsCounter2.closest(selector);
+      if (customTarget) {
+        targetElement = customTarget;
+      }
+    }
+    const parent = digitsCounter2.parentElement;
+    const originalValue = digitsCounter2.innerHTML.trim();
+    let suffix = null;
+    if (digitsCounter2.hasAttribute("data-fls-digcounter-suffix")) {
+      suffix = digitsCounter2.getAttribute("data-fls-digcounter-suffix");
+    }
+    if (suffix && !originalValue.endsWith(suffix)) {
+      digitsCounter2.textContent = originalValue + suffix;
+    }
+    requestAnimationFrame(() => {
+      void digitsCounter2.offsetWidth;
+      const spanWidth = digitsCounter2.offsetWidth;
+      const spanHeight = digitsCounter2.offsetHeight;
+      const targetWidth = targetElement.offsetWidth;
+      const targetHeight = targetElement.offsetHeight;
+      const parentWidth = parent.offsetWidth;
+      const parentHeight = parent.offsetHeight;
+      if (spanWidth > 0) digitsCounter2.style.minWidth = `${spanWidth}px`;
+      if (spanHeight > 0) digitsCounter2.style.minHeight = `${spanHeight}px`;
+      if (targetElement !== digitsCounter2) {
+        if (targetWidth > 0) targetElement.style.minWidth = `${targetWidth}px`;
+        if (targetHeight > 0) targetElement.style.minHeight = `${targetHeight}px`;
+      }
+      if (parentWidth > 0) parent.style.minWidth = `${parentWidth}px`;
+      if (parentHeight > 0) parent.style.minHeight = `${parentHeight}px`;
+      callback();
+      requestAnimationFrame(() => {
+        digitsCounter2.classList.add("_digcounter-visible");
+      });
+    });
+  }
+  function digitsCountersAnimate(digitsCounter2, suffix) {
     let startTimestamp = null;
     const duration = parseFloat(digitsCounter2.dataset.flsDigcounterSpeed) ? parseFloat(digitsCounter2.dataset.flsDigcounterSpeed) : 1e3;
     const originalValue = digitsCounter2.dataset.flsDigcounter;
@@ -229,12 +292,33 @@ function digitsCounter() {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       const value = Math.floor(progress * (startPosition + startValue));
-      digitsCounter2.innerHTML = getDigFormat(value, format);
+      const formattedValue = getDigFormat(value, format);
+      digitsCounter2.innerHTML = suffix ? formattedValue + suffix : formattedValue;
       if (progress < 1) {
         window.requestAnimationFrame(step);
       } else {
-        digitsCounter2.innerHTML = getDigFormat(startValue, format);
+        const finalValue = getDigFormat(startValue, format);
+        digitsCounter2.innerHTML = suffix ? finalValue + suffix : finalValue;
         digitsCounter2.removeAttribute("data-fls-digcounter-go");
+        if (digitsCounter2.hasAttribute("data-fls-digcounter-stabilization")) {
+          let targetElement = digitsCounter2;
+          if (digitsCounter2.hasAttribute("data-fls-digcounter-stabilize-target")) {
+            const selector = digitsCounter2.getAttribute("data-fls-digcounter-stabilize-target");
+            const customTarget = digitsCounter2.closest(selector);
+            if (customTarget) {
+              targetElement = customTarget;
+            }
+          }
+          const parent = digitsCounter2.parentElement;
+          digitsCounter2.style.minWidth = "";
+          digitsCounter2.style.minHeight = "";
+          if (targetElement !== digitsCounter2) {
+            targetElement.style.minWidth = "";
+            targetElement.style.minHeight = "";
+          }
+          parent.style.minWidth = "";
+          parent.style.minHeight = "";
+        }
       }
     };
     window.requestAnimationFrame(step);
