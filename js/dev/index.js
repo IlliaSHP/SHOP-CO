@@ -5032,6 +5032,17 @@ function Autoplay({
     resume
   });
 }
+function updatePaginationVisibility(swiper) {
+  const pagination = swiper.pagination?.el;
+  if (!pagination) return;
+  const slidesCount = swiper.slides.length;
+  const currentSlidesPerView = swiper.params.slidesPerView;
+  if (Math.floor(currentSlidesPerView) >= slidesCount) {
+    pagination.style.display = "none";
+  } else {
+    pagination.style.display = "";
+  }
+}
 function initSliders() {
   if (document.querySelector(".productslider__slider")) {
     new Swiper(".productslider__slider", {
@@ -5047,6 +5058,8 @@ function initSliders() {
       spaceBetween: 16,
       speed: 800,
       // loop: true,
+      watchOverflow: true,
+      // автоматично приховує pagination коли всі слайди видимі
       // Ефекти
       // autoplay: {
       // 	delay: 7000,
@@ -5061,6 +5074,7 @@ function initSliders() {
       breakpoints: {
         //todo Перший раз потрібно робити зміни (перший брейкпоінт) тоді коли останній слайд майже повністю вийшов за межі в'юпорту
         //todo Здається краще всього зміни робити кожні 40px. Але тоді коли наступний слайд також майже повністю вийшов за межі в'юпорту потрібно робити менший на 15px проміжок (25px) і зменшувати slidesPerView на 0.1
+        //* ================= breikpoints =================
         320: {
           slidesPerView: 1.6,
           spaceBetween: 16
@@ -5082,13 +5096,70 @@ function initSliders() {
           spaceBetween: 16
         },
         500: {
-          slidesPerView: "auto",
+          slidesPerView: 2.4,
           spaceBetween: 16
         },
-        767.98: {
-          slidesPerView: "auto",
+        625: {
+          slidesPerView: 2.6,
+          spaceBetween: 16
+        },
+        700: {
+          slidesPerView: 2.8,
+          spaceBetween: 20
+        },
+        800: {
+          slidesPerView: 3.2,
+          spaceBetween: 20
+        },
+        880: {
+          slidesPerView: 3.5,
+          spaceBetween: 20
+        },
+        991.98: {
+          slidesPerView: 3.7,
+          spaceBetween: 20
+        },
+        1180: {
+          slidesPerView: 4,
           spaceBetween: 20
         }
+        //* ============================== slidesPerView: 'auto' ===========================
+        //* Це також хороші брейкпоінти, по макету, але зроблені через auto, тому не можна зробити watchOverflow.
+        // Щоб працювати з цією версією потрібно ще розкоментувати max-width і width для .card-productslider__product,
+        // а також max-width для .card-productslider
+        //todo Перший раз потрібно робити зміни (перший брейкпоінт) тоді коли останній слайд майже повністю вийшов за межі в'юпорту
+        //todo Здається краще всього зміни робити кожні 40px. Але тоді коли наступний слайд також майже повністю вийшов за межі в'юпорту потрібно робити менший на 15px проміжок (25px) і зменшувати slidesPerView на 0.1
+        // 320: {
+        // 	slidesPerView: 1.6,
+        // 	spaceBetween: 16,
+        // },
+        // 350: {
+        // 	slidesPerView: 1.7,
+        // 	spaceBetween: 16,
+        // },
+        // 380: {
+        // 	slidesPerView: 1.9,
+        // 	spaceBetween: 16,
+        // },
+        // 425: {
+        // 	slidesPerView: 2.1,
+        // 	spaceBetween: 16,
+        // },
+        // 460: {
+        // 	slidesPerView: 2.2,
+        // 	spaceBetween: 16,
+        // },
+        // 500: {
+        // 	//! auto потрібно відмінити, тому що з ним не можна використовувати watchOverflow
+        // 	//! Все було досить гарно і добре, якби не це
+        // 	slidesPerView: 'auto',
+        // 	spaceBetween: 16,
+        // },
+        // 767.98: {
+        // 	slidesPerView: 'auto',
+        // 	spaceBetween: 20,
+        // },
+        //* =====================================================================
         //* Це хороші брейкпоінти, але по макету не підходять
         //* Потрібно на мобілці в рівних проміжках робити зміни
         // 340: {
@@ -5108,6 +5179,43 @@ function initSliders() {
         // 	slidesPerView: 'auto',
         // },
       },
+      // Події
+      on: {
+        init: function() {
+          updatePaginationVisibility(this);
+        },
+        breakpoint: function() {
+          updatePaginationVisibility(this);
+        }
+        // observerUpdate: function() {
+        // 	// Спрацьовує коли змінюється DOM (додаються/видаляються слайди)
+        // 	updatePaginationVisibility(this);
+        // }
+      }
+    });
+  }
+  if (document.querySelector(".customers__slider")) {
+    new Swiper(".customers__slider", {
+      // <- Вказуємо склас потрібного слайдера
+      // Підключаємо модулі слайдера
+      // для конкретного випадку
+      modules: [Navigation, Autoplay],
+      observer: true,
+      observeParents: true,
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      speed: 500,
+      navigation: {
+        prevEl: ".customers-button-prev",
+        nextEl: ".customers-button-next"
+      },
+      // Ефекти
+      // autoplay: {
+      // 	delay: 7000,
+      // 	disableOnInteraction: false,
+      // },
+      // Брейкпоінти
+      breakpoints: {},
       // Події
       on: {}
     });
@@ -5597,7 +5705,7 @@ const marquee = () => {
     const isVertical = direction === "bottom" || direction === "top";
     const animName = `marqueeAnimation-${Math.floor(Math.random() * 1e7)}`;
     let spaceBetweenItem = parseFloat(window.getComputedStyle($items[0])?.getPropertyValue("margin-right"));
-    let spaceBetween = spaceBetweenItem ? spaceBetweenItem : !isNaN(dataMarqueeSpace) ? dataMarqueeSpace : 30;
+    let spaceBetween = spaceBetweenItem !== null && spaceBetweenItem !== void 0 ? spaceBetweenItem : !isNaN(dataMarqueeSpace) ? dataMarqueeSpace : 30;
     let startPosition = parseFloat($wrapper.getAttribute("data-fls-marquee-start")) || 0;
     let sumSize = 0;
     let firstScreenVisibleSize = 0;
@@ -5684,7 +5792,9 @@ const marquee = () => {
         if (isVertical) {
           $item.style.marginBottom = `${spaceBetween}px`;
         } else {
-          $item.style.marginRight = `${spaceBetween}px`;
+          if (spaceBetweenItem === null || spaceBetweenItem === void 0) {
+            $item.style.marginRight = `${spaceBetween}px`;
+          }
           $item.style.flexShrink = 0;
         }
         const sizeEl = getElSize($item, isVertical);
@@ -5709,10 +5819,10 @@ const marquee = () => {
       setBaseStyles(firstScreenVisibleSize);
     };
     const correctSpaceBetween = () => {
-      if (spaceBetweenItem) {
+      if (spaceBetweenItem !== null && spaceBetweenItem !== void 0) {
         $items.forEach(($item) => $item.style.removeProperty("margin-right"));
         spaceBetweenItem = parseFloat(window.getComputedStyle($items[0]).getPropertyValue("margin-right"));
-        spaceBetween = spaceBetweenItem ? spaceBetweenItem : !isNaN(dataMarqueeSpace) ? dataMarqueeSpace : 30;
+        spaceBetween = spaceBetweenItem !== null && spaceBetweenItem !== void 0 ? spaceBetweenItem : !isNaN(dataMarqueeSpace) ? dataMarqueeSpace : 30;
       }
     };
     const init = () => {
