@@ -9,9 +9,11 @@
 		<link rel="preload" href="./assets/fonts/integral-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1769029840521"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1769029840521">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1769029840521">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1769200699285"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1769200699285">
+		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1769200699285">
+		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1769200699285">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1769200699285">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -31,10 +33,10 @@
 							<button type="button" data-fls-menu="" class="menu__icon icon-menu">
 								<span></span>
 							</button>
-							<button data-fls-logo="" type="button" class="header__logo logo">SHOP.CO</button>
+							<button data-fls-logo="" type="button" class="header__logo logo" aria-label="Shop.co home">SHOP.CO</button>
 						</div>
 						<!-- <include src="@components/layout/menu/menu.html" locals='{"active":"Home"}'></include> -->
-						<nav class="header__menu menu">
+						<nav class="header__menu menu" aria-label="Main navigation">
 							<ul class="menu__list">
 								<li class="menu__item menu__item--dropdown">
 									<button class="menu__link" type="button" aria-expanded="false">
@@ -76,14 +78,14 @@
 							</ul>
 						</nav>
 						<div class="header__actions header-actions">
-							<form class="header-actions__search search-header" role="search" aria-label="Search products">
-								<input data-fls-input="" type="search" class="search-header__input input--header" aria-label="Product search" placeholder="Search for products...">
-								<button type="button" class="search-header__search-icon" aria-label="Search" title="Search">
+							<form data-fls-inputicon="" class="header-actions__search inputicon-search" role="search" aria-label="Search products">
+								<input data-fls-input="" type="search" class="inputicon-search__input input--header" aria-label="Product search" placeholder="Search for products...">
+								<button type="button" class="inputicon-search__search-icon" aria-label="Search" title="Search">
 									<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M21.7959 20.2041L17.3437 15.75C18.6787 14.0104 19.3019 11.8282 19.087 9.64607C18.8722 7.4639 17.8353 5.44516 16.1867 3.99937C14.5382 2.55357 12.4014 1.78899 10.2098 1.86071C8.01829 1.93244 5.93607 2.8351 4.38558 4.38559C2.83509 5.93608 1.93243 8.0183 1.8607 10.2098C1.78898 12.4014 2.55356 14.5382 3.99936 16.1867C5.44515 17.8353 7.46389 18.8722 9.64606 19.087C11.8282 19.3019 14.0104 18.6787 15.75 17.3438L20.2059 21.8006C20.3106 21.9053 20.4348 21.9883 20.5715 22.0449C20.7083 22.1016 20.8548 22.1307 21.0028 22.1307C21.1508 22.1307 21.2973 22.1016 21.4341 22.0449C21.5708 21.9883 21.695 21.9053 21.7997 21.8006C21.9043 21.696 21.9873 21.5717 22.044 21.435C22.1006 21.2983 22.1298 21.1517 22.1298 21.0037C22.1298 20.8558 22.1006 20.7092 22.044 20.5725C21.9873 20.4358 21.9043 20.3115 21.7997 20.2069L21.7959 20.2041ZM4.12499 10.5C4.12499 9.23915 4.49888 8.0066 5.19938 6.95824C5.89987 5.90988 6.89551 5.09278 8.06039 4.61027C9.22527 4.12776 10.5071 4.00151 11.7437 4.2475C12.9803 4.49348 14.1162 5.10064 15.0078 5.9922C15.8994 6.88376 16.5065 8.01967 16.7525 9.2563C16.9985 10.4929 16.8722 11.7747 16.3897 12.9396C15.9072 14.1045 15.0901 15.1001 14.0418 15.8006C12.9934 16.5011 11.7608 16.875 10.5 16.875C8.80977 16.8733 7.18927 16.2011 5.99411 15.0059C4.79894 13.8107 4.12673 12.1902 4.12499 10.5Z" fill="black" fill-opacity="0.4"></path>
 									</svg>
 								</button>
-								<button data-fls-closebtn="" type="button" aria-label="Clear search" class="search-header__clear close-btn"></button>
+								<button data-fls-closebtn="" type="button" aria-label="Clear search" class="inputicon-search__clear close-btn"></button>
 							</form>
 							<a href="product.html" class="header-actions__item" aria-label="Shop">
 								<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +103,7 @@
 			</div>
 			<main class="page">
 				<!--
-<script type="module" src="@components/pages/index/index.js?v=1769029840521"></script>
+<script type="module" src="@components/pages/index/index.js?v=1769200699285"></script>
 <link rel="stylesheet" href="@components/pages/index/index.scss">
 -->
 				<main data-fls-index="" class="index home-page">
@@ -191,7 +193,7 @@
 						<div class="productslider__container">
 							<h2 class="productslider__label title title--48">NEW ARRIVALS</h2>
 							<!-- Оболонка слайдера -->
-							<div data-fls-slider="" class="productslider__slider swiper">
+							<div data-fls-slider="" class="productslider__slider new-arrivals-slider swiper">
 								<!-- Частина слайдера, що рухається -->
 								<div class="productslider__wrapper swiper-wrapper">
 									<div class="productslider__slide swiper-slide">
@@ -218,8 +220,8 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$120</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$120</span>
 												</div>
 											</div>
 										</article>
@@ -247,10 +249,10 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$240</span>
-													<del class="pirce-content-productcard__old">$260</del>
-													<span class="pirce-content-productcard__sale">-20%</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$240</span>
+													<del class="priceproduct__old">$260</del>
+													<span class="priceproduct__sale">-20%</span>
 												</div>
 											</div>
 										</article>
@@ -279,8 +281,8 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$180</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$180</span>
 												</div>
 											</div>
 										</article>
@@ -309,16 +311,16 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$130</span>
-													<del class="pirce-content-productcard__old">$160</del>
-													<span class="pirce-content-productcard__sale">-30%</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$130</span>
+													<del class="priceproduct__old">$160</del>
+													<span class="priceproduct__sale">-30%</span>
 												</div>
 											</div>
 										</article>
 									</div>
 								</div>
-								<div class="productslider__pagination swiper-pagination"></div>
+								<div class="productslider__pagination new-arrivals-pagination swiper-pagination"></div>
 							</div>
 							<a href="category.html" data-fls-button="" class="productslider__button button button--second">
 								<span>View All</span>
@@ -329,7 +331,7 @@
 						<div class="productslider__container">
 							<h2 class="productslider__label title title--48">top selling</h2>
 							<!-- Оболонка слайдера -->
-							<div data-fls-slider="" class="productslider__slider swiper">
+							<div data-fls-slider="" class="productslider__slider top-selling-slider swiper">
 								<!-- Частина слайдера, що рухається -->
 								<div class="productslider__wrapper swiper-wrapper">
 									<div class="productslider__slide swiper-slide">
@@ -356,10 +358,10 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$212</span>
-													<del class="pirce-content-productcard__old">$232</del>
-													<span class="pirce-content-productcard__sale">-20%</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$212</span>
+													<del class="priceproduct__old">$232</del>
+													<span class="priceproduct__sale">-20%</span>
 												</div>
 											</div>
 										</article>
@@ -387,8 +389,8 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$145</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$145</span>
 												</div>
 											</div>
 										</article>
@@ -415,8 +417,8 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$80</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$80</span>
 												</div>
 											</div>
 										</article>
@@ -445,45 +447,54 @@
 														<span>5</span>
 													</div>
 												</div>
-												<div class="content-productcard__pirce pirce-content-productcard">
-													<span class="pirce-content-productcard__new">$210</span>
+												<div data-fls-priceproduct="" class="content-productcard__price priceproduct">
+													<span class="priceproduct__new">$210</span>
 												</div>
 											</div>
 										</article>
 									</div>
 								</div>
-								<div class="productslider__pagination swiper-pagination"></div>
+								<div class="productslider__pagination top-selling-pagination swiper-pagination"></div>
 							</div>
 							<a href="category.html" data-fls-button="" class="productslider__button button button--second">
 								<span>View All</span>
 							</a>
 						</div>
 					</section>
-					<!--
-<section class="dress-style">
-<div class="dress-style__container">
-<h2 class="dress-style__title title title--48"></h2>
-<div class="dress-style__items">
-<div class="dress-style__item">
-<h4 class="dress-style__label">Casual</h4>
-<img src="@img/browse-by-style/1.jpg" alt="Image">
-</div>
-<div class="dress-style__item">
-<h4 class="dress-style__label">formal</h4>
-<img src="@img/browse-by-style/2.jpg" alt="Image">
-</div>
-<div class="dress-style__item">
-<h4 class="dress-style__label">Party</h4>
-<img src="@img/browse-by-style/3.jpg" alt="Image">
-</div>
-<div class="dress-style__item">
-<h4 class="dress-style__label">Gym</h4>
-<img src="@img/browse-by-style/4.jpg" alt="Image">
-</div>
-</div>
-</div>
-</section>
--->
+					<section class="dress-style">
+						<div class="dress-style__container">
+							<h2 class="dress-style__title title title--48">BROWSE BY dress STYLE</h2>
+							<div class="dress-style__items">
+								<a href="#" class="dress-style__item">
+									<h3 class="dress-style__label">Casual</h3>
+									<picture>
+										<img alt="Casual dress style" src="./assets/img/browse-by-style/1.webp">
+									</picture>
+								</a>
+								<a href="#" class="dress-style__item">
+									<h3 class="dress-style__label">formal</h3>
+									<picture>
+										<source media="(max-width: 600px)" srcset="./assets/img/browse-by-style/2-600.webp" type="image/webp">
+										<source media="(max-width: 1200px)" srcset="./assets/img/browse-by-style/2-1200.webp" type="image/webp">
+										<img alt="Formal dress style" src="./assets/img/browse-by-style/2.webp">
+									</picture>
+								</a>
+								<a href="#" class="dress-style__item">
+									<h3 class="dress-style__label">Party</h3>
+									<picture>
+										<source media="(max-width: 600px)" srcset="./assets/img/browse-by-style/3-600.webp" type="image/webp">
+										<img alt="Party dress style" src="./assets/img/browse-by-style/3.webp">
+									</picture>
+								</a>
+								<a href="#" class="dress-style__item">
+									<h3 class="dress-style__label">Gym</h3>
+									<picture>
+										<img alt="Gym dress style" src="./assets/img/browse-by-style/4.webp">
+									</picture>
+								</a>
+							</div>
+						</div>
+					</section>
 					<section class="customers">
 						<div class="customers__container">
 							<div class="customers__top">
@@ -523,8 +534,7 @@
 												</svg>
 											</div>
 										</div>
-										<!-- ! Замінити текст на відгук -->
-										<div class="clients__text text--16">
+										<div class="clients__testimonial text--16">
 											<p>
 												"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”
 											</p>
@@ -550,8 +560,7 @@
 												</svg>
 											</div>
 										</div>
-										<!-- ! Замінити текст на відгук -->
-										<div class="clients__text text--16">
+										<div class="clients__testimonial text--16">
 											<p>
 												"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”
 											</p>
@@ -577,8 +586,7 @@
 												</svg>
 											</div>
 										</div>
-										<!-- ! Замінити текст на відгук -->
-										<div class="clients__text text--16">
+										<div class="clients__testimonial text--16">
 											<p>
 												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
 											</p>
@@ -604,8 +612,7 @@
 												</svg>
 											</div>
 										</div>
-										<!-- ! Замінити текст на відгук -->
-										<div class="clients__text text--16">
+										<div class="clients__testimonial text--16">
 											<p>
 												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
 											</p>
@@ -631,8 +638,7 @@
 												</svg>
 											</div>
 										</div>
-										<!-- ! Замінити текст на відгук -->
-										<div class="clients__text text--16">
+										<div class="clients__testimonial text--16">
 											<p>
 												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
 											</p>
@@ -658,8 +664,85 @@
 												</svg>
 											</div>
 										</div>
-										<!-- ! Замінити текст на відгук -->
-										<div class="clients__text text--16">
+										<div class="clients__testimonial text--16">
+											<p>
+												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
+											</p>
+										</div>
+									</div>
+								</div>
+								<div data-fls-clients="" class="customers__slide swiper-slide">
+									<div class="customers__clients clients">
+										<div data-fls-productrating="" class="clients__productrating productrating">
+											<div class="productrating__stars">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+											</div>
+										</div>
+										<div class="clients__author">
+											<div class="clients__name">Mooen D.</div>
+											<div class="clients__check">
+												<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M12 2.25C10.0716 2.25 8.18657 2.82183 6.58319 3.89317C4.97982 4.96451 3.73013 6.48726 2.99218 8.26884C2.25422 10.0504 2.06114 12.0108 2.43735 13.9021C2.81355 15.7934 3.74215 17.5307 5.10571 18.8943C6.46928 20.2579 8.20656 21.1865 10.0979 21.5627C11.9892 21.9389 13.9496 21.7458 15.7312 21.0078C17.5127 20.2699 19.0355 19.0202 20.1068 17.4168C21.1782 15.8134 21.75 13.9284 21.75 12C21.7473 9.41498 20.7192 6.93661 18.8913 5.10872C17.0634 3.28084 14.585 2.25273 12 2.25ZM16.2806 10.2806L11.0306 15.5306C10.961 15.6004 10.8783 15.6557 10.7872 15.6934C10.6962 15.7312 10.5986 15.7506 10.5 15.7506C10.4014 15.7506 10.3038 15.7312 10.2128 15.6934C10.1218 15.6557 10.039 15.6004 9.96938 15.5306L7.71938 13.2806C7.57865 13.1399 7.49959 12.949 7.49959 12.75C7.49959 12.551 7.57865 12.3601 7.71938 12.2194C7.86011 12.0786 8.05098 11.9996 8.25 11.9996C8.44903 11.9996 8.6399 12.0786 8.78063 12.2194L10.5 13.9397L15.2194 9.21937C15.2891 9.14969 15.3718 9.09442 15.4628 9.0567C15.5539 9.01899 15.6515 8.99958 15.75 8.99958C15.8486 8.99958 15.9461 9.01899 16.0372 9.0567C16.1282 9.09442 16.2109 9.14969 16.2806 9.21937C16.3503 9.28906 16.4056 9.37178 16.4433 9.46283C16.481 9.55387 16.5004 9.65145 16.5004 9.75C16.5004 9.84855 16.481 9.94613 16.4433 10.0372C16.4056 10.1282 16.3503 10.2109 16.2806 10.2806Z" fill="#01AB31"></path>
+												</svg>
+											</div>
+										</div>
+										<div class="clients__testimonial text--16">
+											<p>
+												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
+											</p>
+										</div>
+									</div>
+								</div>
+								<div data-fls-clients="" class="customers__slide swiper-slide">
+									<div class="customers__clients clients">
+										<div data-fls-productrating="" class="clients__productrating productrating">
+											<div class="productrating__stars">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+											</div>
+										</div>
+										<div class="clients__author">
+											<div class="clients__name">Mooen D.</div>
+											<div class="clients__check">
+												<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M12 2.25C10.0716 2.25 8.18657 2.82183 6.58319 3.89317C4.97982 4.96451 3.73013 6.48726 2.99218 8.26884C2.25422 10.0504 2.06114 12.0108 2.43735 13.9021C2.81355 15.7934 3.74215 17.5307 5.10571 18.8943C6.46928 20.2579 8.20656 21.1865 10.0979 21.5627C11.9892 21.9389 13.9496 21.7458 15.7312 21.0078C17.5127 20.2699 19.0355 19.0202 20.1068 17.4168C21.1782 15.8134 21.75 13.9284 21.75 12C21.7473 9.41498 20.7192 6.93661 18.8913 5.10872C17.0634 3.28084 14.585 2.25273 12 2.25ZM16.2806 10.2806L11.0306 15.5306C10.961 15.6004 10.8783 15.6557 10.7872 15.6934C10.6962 15.7312 10.5986 15.7506 10.5 15.7506C10.4014 15.7506 10.3038 15.7312 10.2128 15.6934C10.1218 15.6557 10.039 15.6004 9.96938 15.5306L7.71938 13.2806C7.57865 13.1399 7.49959 12.949 7.49959 12.75C7.49959 12.551 7.57865 12.3601 7.71938 12.2194C7.86011 12.0786 8.05098 11.9996 8.25 11.9996C8.44903 11.9996 8.6399 12.0786 8.78063 12.2194L10.5 13.9397L15.2194 9.21937C15.2891 9.14969 15.3718 9.09442 15.4628 9.0567C15.5539 9.01899 15.6515 8.99958 15.75 8.99958C15.8486 8.99958 15.9461 9.01899 16.0372 9.0567C16.1282 9.09442 16.2109 9.14969 16.2806 9.21937C16.3503 9.28906 16.4056 9.37178 16.4433 9.46283C16.481 9.55387 16.5004 9.65145 16.5004 9.75C16.5004 9.84855 16.481 9.94613 16.4433 10.0372C16.4056 10.1282 16.3503 10.2109 16.2806 10.2806Z" fill="#01AB31"></path>
+												</svg>
+											</div>
+										</div>
+										<div class="clients__testimonial text--16">
+											<p>
+												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
+											</p>
+										</div>
+									</div>
+								</div>
+								<div data-fls-clients="" class="customers__slide swiper-slide">
+									<div class="customers__clients clients">
+										<div data-fls-productrating="" class="clients__productrating productrating">
+											<div class="productrating__stars">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+												<img src="./assets/img/icons/Star.svg" alt="rating">
+											</div>
+										</div>
+										<div class="clients__author">
+											<div class="clients__name">Mooen D.</div>
+											<div class="clients__check">
+												<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M12 2.25C10.0716 2.25 8.18657 2.82183 6.58319 3.89317C4.97982 4.96451 3.73013 6.48726 2.99218 8.26884C2.25422 10.0504 2.06114 12.0108 2.43735 13.9021C2.81355 15.7934 3.74215 17.5307 5.10571 18.8943C6.46928 20.2579 8.20656 21.1865 10.0979 21.5627C11.9892 21.9389 13.9496 21.7458 15.7312 21.0078C17.5127 20.2699 19.0355 19.0202 20.1068 17.4168C21.1782 15.8134 21.75 13.9284 21.75 12C21.7473 9.41498 20.7192 6.93661 18.8913 5.10872C17.0634 3.28084 14.585 2.25273 12 2.25ZM16.2806 10.2806L11.0306 15.5306C10.961 15.6004 10.8783 15.6557 10.7872 15.6934C10.6962 15.7312 10.5986 15.7506 10.5 15.7506C10.4014 15.7506 10.3038 15.7312 10.2128 15.6934C10.1218 15.6557 10.039 15.6004 9.96938 15.5306L7.71938 13.2806C7.57865 13.1399 7.49959 12.949 7.49959 12.75C7.49959 12.551 7.57865 12.3601 7.71938 12.2194C7.86011 12.0786 8.05098 11.9996 8.25 11.9996C8.44903 11.9996 8.6399 12.0786 8.78063 12.2194L10.5 13.9397L15.2194 9.21937C15.2891 9.14969 15.3718 9.09442 15.4628 9.0567C15.5539 9.01899 15.6515 8.99958 15.75 8.99958C15.8486 8.99958 15.9461 9.01899 16.0372 9.0567C16.1282 9.09442 16.2109 9.14969 16.2806 9.21937C16.3503 9.28906 16.4056 9.37178 16.4433 9.46283C16.481 9.55387 16.5004 9.65145 16.5004 9.75C16.5004 9.84855 16.481 9.94613 16.4433 10.0372C16.4056 10.1282 16.3503 10.2109 16.2806 10.2806Z" fill="#01AB31"></path>
+												</svg>
+											</div>
+										</div>
+										<div class="clients__testimonial text--16">
 											<p>
 												"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
 											</p>
@@ -672,7 +755,188 @@
 				</main>
 			</main>
 			<footer data-fls-footer="" class="footer">
-				<div class="footer__container"></div>
+				<section class="footer__subscribe subscribe-footer" aria-labelledby="subscribe-heading">
+					<div class="subscribe-footer__container">
+						<div class="subscribe-footer__content">
+							<h2 class="subscribe-footer__title title title--40">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
+							<form data-fls-inputicon="" class="subscribe-footer__form inputicon" action="#" method="POST">
+								<div class="inputicon__input">
+									<label for="email-input">
+										<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21 4.125H3C2.70163 4.125 2.41548 4.24353 2.2045 4.4545C1.99353 4.66548 1.875 4.95163 1.875 5.25V18C1.875 18.4973 2.07254 18.9742 2.42417 19.3258C2.77581 19.6775 3.25272 19.875 3.75 19.875H20.25C20.7473 19.875 21.2242 19.6775 21.5758 19.3258C21.9275 18.9742 22.125 18.4973 22.125 18V5.25C22.125 4.95163 22.0065 4.66548 21.7955 4.4545C21.5845 4.24353 21.2984 4.125 21 4.125ZM12 11.9738L5.89219 6.375H18.1078L12 11.9738ZM8.69906 12L4.125 16.1925V7.8075L8.69906 12ZM10.3641 13.5262L11.2397 14.3297C11.4472 14.52 11.7185 14.6255 12 14.6255C12.2815 14.6255 12.5528 14.52 12.7603 14.3297L13.6359 13.5262L18.1078 17.625H5.89219L10.3641 13.5262ZM15.3009 12L19.875 7.8075V16.1925L15.3009 12Z" fill="black" fill-opacity="0.4"></path>
+										</svg>
+									</label>
+									<input data-fls-input="" type="email" id="email-input" name="email" placeholder="Enter your email address" required aria-required="true" autocomplete="email">
+								</div>
+								<button type="submit" data-fls-button="" class="inputicon__button button button--second">
+									<span>Subscribe to Newsletter</span>
+								</button>
+							</form>
+						</div>
+					</div>
+				</section>
+				<div class="footer__main main-footer">
+					<div class="main-footer__container">
+						<div class="main-footer__brand">
+							<button data-fls-logo="" type="button" class="main-footer__logo logo" aria-label="Shop.co home">SHOP.CO</button>
+							<div class="main-footer__description text--16">
+								<p>
+									We have clothes that suits your style and which you're proud to wear. From women to men.
+								</p>
+							</div>
+							<ul data-fls-sociallinks="" class="main-footer__social social-links" aria-label="Social media links">
+								<li class="social-links__item">
+									<p class="social-links__name">Twitter</p>
+									<a href="#" class="social-links__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank">
+										<svg width="12" height="10" viewbox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M11.1739 1.04756C10.7549 1.23379 10.3126 1.35018 9.84702 1.42002C10.3126 1.14067 10.6851 0.698371 10.848 0.162953C10.4057 0.419022 9.91686 0.605254 9.38144 0.721649C8.96242 0.279348 8.35717 0 7.70535 0C6.44829 0 5.42401 1.02428 5.42401 2.28134C5.42401 2.46758 5.44729 2.63053 5.49385 2.79348C3.60825 2.70037 1.90888 1.79248 0.768207 0.395743C0.581975 0.744929 0.46558 1.11739 0.46558 1.53641C0.46558 2.3279 0.861323 3.02627 1.48986 3.44529C1.11739 3.42202 0.768207 3.3289 0.442301 3.16595V3.18922C0.442301 4.30662 1.23379 5.23778 2.28134 5.44729C2.09511 5.49385 1.8856 5.51713 1.67609 5.51713C1.53641 5.51713 1.37346 5.49385 1.23379 5.47057C1.53641 6.37845 2.37446 7.05354 3.37546 7.05354C2.58397 7.6588 1.60625 8.03126 0.535417 8.03126C0.349185 8.03126 0.162953 8.03126 0 8.00798C1.02428 8.65979 2.21151 9.03226 3.51513 9.03226C7.72863 9.03226 10.0333 5.54041 10.0333 2.51413C10.0333 2.42102 10.0333 2.30462 10.0333 2.21151C10.4756 1.90888 10.8713 1.51314 11.1739 1.04756Z" fill="black"></path>
+										</svg>
+									</a>
+								</li>
+								<li class="social-links__item">
+									<p class="social-links__name">Facebook</p>
+									<a href="#" class="social-links__link" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+										<svg width="7" height="13" viewbox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1.86888 12.1749V6.62136H0V4.45703H1.86888V2.8609C1.86888 1.00861 3.0002 0 4.65258 0C5.44408 0 6.12434 0.0589293 6.32258 0.0852686V2.02102L5.17657 2.02154C4.27792 2.02154 4.10392 2.44857 4.10392 3.0752V4.45703H6.24712L5.96807 6.62136H4.10391V12.1749H1.86888Z" fill="white"></path>
+										</svg>
+									</a>
+								</li>
+								<li class="social-links__item">
+									<p class="social-links__name">Instagram</p>
+									<a href="#" class="social-links__link" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+										<svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M6.77419 1.22064C8.5829 1.22064 8.7971 1.22742 9.51161 1.26C9.94122 1.26526 10.3667 1.34414 10.7697 1.49323C11.0619 1.60592 11.3273 1.77855 11.5487 2C11.7702 2.22145 11.9428 2.48683 12.0555 2.77903C12.2046 3.18197 12.2835 3.60749 12.2887 4.0371C12.321 4.75161 12.3281 4.96581 12.3281 6.77452C12.3281 8.58322 12.3213 8.79742 12.2887 9.51193C12.2835 9.94154 12.2046 10.3671 12.0555 10.77C11.9428 11.0622 11.7702 11.3276 11.5487 11.549C11.3273 11.7705 11.0619 11.9431 10.7697 12.0558C10.3667 12.2049 9.94122 12.2838 9.51161 12.289C8.79742 12.3213 8.58323 12.3284 6.77419 12.3284C4.96516 12.3284 4.75097 12.3216 4.03677 12.289C3.60717 12.2838 3.18165 12.2049 2.77871 12.0558C2.4865 11.9431 2.22113 11.7705 1.99968 11.549C1.77822 11.3276 1.60559 11.0622 1.4929 10.77C1.34382 10.3671 1.26493 9.94154 1.25968 9.51193C1.22742 8.79742 1.22032 8.58322 1.22032 6.77452C1.22032 4.96581 1.2271 4.75161 1.25968 4.0371C1.26493 3.60749 1.34382 3.18197 1.4929 2.77903C1.60559 2.48683 1.77822 2.22145 1.99968 2C2.22113 1.77855 2.4865 1.60592 2.77871 1.49323C3.18165 1.34414 3.60717 1.26526 4.03677 1.26C4.75129 1.22774 4.96548 1.22064 6.77419 1.22064ZM6.77419 0C4.93548 0 4.70387 0.00774191 3.98129 0.0406451C3.41905 0.0518283 2.86277 0.158284 2.33613 0.355484C1.88435 0.525699 1.47516 0.79244 1.1371 1.1371C0.792129 1.47528 0.525159 1.88471 0.354839 2.33677C0.157639 2.86342 0.0511832 3.41969 0.04 3.98194C0.00774196 4.70387 0 4.93548 0 6.77419C0 8.6129 0.00774191 8.84452 0.0406451 9.5671C0.0518283 10.1293 0.158284 10.6856 0.355484 11.2123C0.525616 11.6643 0.792362 12.0737 1.1371 12.4119C1.47535 12.7567 1.88477 13.0234 2.33677 13.1935C2.86342 13.3907 3.41969 13.4972 3.98194 13.5084C4.70452 13.5406 4.93516 13.549 6.77484 13.549C8.61452 13.549 8.84516 13.5413 9.56774 13.5084C10.13 13.4972 10.6863 13.3907 11.2129 13.1935C11.6628 13.0192 12.0713 12.7528 12.4123 12.4116C12.7534 12.0703 13.0195 11.6616 13.1936 11.2116C13.3907 10.685 13.4972 10.1287 13.5084 9.56645C13.5406 8.84451 13.5484 8.6129 13.5484 6.77419C13.5484 4.93548 13.5406 4.70387 13.5077 3.98129C13.4966 3.41905 13.3901 2.86277 13.1929 2.33613C13.0228 1.88412 12.756 1.4747 12.4113 1.13645C12.073 0.791716 11.6636 0.52497 11.2116 0.354839C10.685 0.157639 10.1287 0.0511832 9.56645 0.04C8.84452 0.00774196 8.6129 0 6.77419 0Z" fill="black"></path>
+											<path d="M6.77559 3.29688C6.08756 3.29688 5.41499 3.5009 4.84292 3.88314C4.27085 4.26539 3.82497 4.80869 3.56168 5.44434C3.29838 6.07999 3.22949 6.77944 3.36372 7.45425C3.49795 8.12905 3.82926 8.7489 4.31577 9.2354C4.80227 9.72191 5.42212 10.0532 6.09692 10.1875C6.77173 10.3217 7.47118 10.2528 8.10683 9.98949C8.74248 9.7262 9.28578 9.28032 9.66803 8.70825C10.0503 8.13618 10.2543 7.46361 10.2543 6.77558C10.2543 5.85297 9.88779 4.96815 9.2354 4.31577C8.58302 3.66338 7.6982 3.29688 6.77559 3.29688ZM6.77559 9.03365C6.32898 9.03365 5.89241 8.90122 5.52107 8.6531C5.14974 8.40498 4.86031 8.05232 4.68941 7.63971C4.5185 7.2271 4.47378 6.77308 4.56091 6.33506C4.64804 5.89704 4.8631 5.49469 5.17889 5.17889C5.49469 4.8631 5.89704 4.64804 6.33506 4.56091C6.77308 4.47378 7.2271 4.5185 7.63971 4.6894C8.05232 4.86031 8.40498 5.14973 8.6531 5.52107C8.90122 5.89241 9.03365 6.32898 9.03365 6.77558C9.03365 7.37446 8.79575 7.94881 8.37228 8.37228C7.94881 8.79575 7.37446 9.03365 6.77559 9.03365Z" fill="black"></path>
+											<path d="M10.391 3.97151C10.84 3.97151 11.2039 3.60756 11.2039 3.15861C11.2039 2.70965 10.84 2.3457 10.391 2.3457C9.94207 2.3457 9.57812 2.70965 9.57812 3.15861C9.57812 3.60756 9.94207 3.97151 10.391 3.97151Z" fill="black"></path>
+										</svg>
+									</a>
+								</li>
+								<li class="social-links__item">
+									<p class="social-links__name">GitHub</p>
+									<a href="#" class="social-links__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank">
+										<svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M6.4799 0C2.88895 0 0 2.88895 0 6.4799C0 9.34185 1.86297 11.7718 4.42793 12.6358C4.75192 12.6898 4.85992 12.5008 4.85992 12.3118C4.85992 12.1498 4.85992 11.7448 4.85992 11.2048C3.05095 11.6098 2.67296 10.3408 2.67296 10.3408C2.37596 9.58485 1.94397 9.39585 1.94397 9.39585C1.34998 8.99086 1.99797 8.99086 1.99797 8.99086C2.64596 9.04486 2.99695 9.66585 2.99695 9.66585C3.56394 10.6648 4.50893 10.3678 4.88692 10.2058C4.94092 9.77384 5.10292 9.50385 5.29192 9.34185C3.86094 9.17985 2.34896 8.61286 2.34896 6.1289C2.34896 5.42691 2.59196 4.83292 3.02395 4.40093C2.96995 4.23893 2.72696 3.59094 3.07795 2.67296C3.07795 2.67296 3.61794 2.51096 4.85992 3.34795C5.37291 3.21295 5.9399 3.13195 6.4799 3.13195C7.01989 3.13195 7.58688 3.21295 8.09987 3.34795C9.34185 2.51096 9.88184 2.67296 9.88184 2.67296C10.2328 3.56394 10.0168 4.21193 9.93584 4.40093C10.3408 4.85992 10.6108 5.42691 10.6108 6.1289C10.6108 8.61286 9.09885 9.15285 7.64088 9.31485C7.88387 9.50385 8.07287 9.90884 8.07287 10.5028C8.07287 11.3668 8.07287 12.0688 8.07287 12.2848C8.07287 12.4468 8.18087 12.6628 8.53186 12.6088C11.0968 11.7718 12.9598 9.34185 12.9598 6.4799C12.9598 2.88895 10.0708 0 6.4799 0Z" fill="black"></path>
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<nav class="main-footer__column text--16" aria-label="Company links">
+							<h3 class="main-footer__title">COMPANY</h3>
+							<ul class="main-footer__links">
+								<li>
+									<a href="#">About</a>
+								</li>
+								<li>
+									<a href="#">Features</a>
+								</li>
+								<li>
+									<a href="#">Works</a>
+								</li>
+								<li>
+									<a href="#">Career</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="main-footer__column text--16" aria-label="Help links">
+							<h3 class="main-footer__title">HELP</h3>
+							<ul class="main-footer__links">
+								<li>
+									<a href="#">Customer Support</a>
+								</li>
+								<li>
+									<a href="#">Delivery Details</a>
+								</li>
+								<li>
+									<a href="#">Terms & Conditions</a>
+								</li>
+								<li>
+									<a href="#">Privacy Policy</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="main-footer__column text--16" aria-label="FAQ links">
+							<h3 class="main-footer__title">FAQ</h3>
+							<ul class="main-footer__links">
+								<li>
+									<a href="#">Account</a>
+								</li>
+								<li>
+									<a href="#">Manage Deliveries</a>
+								</li>
+								<li>
+									<a href="#">Orders</a>
+								</li>
+								<li>
+									<a href="#">Payments</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="main-footer__column text--16" aria-label="Resources links">
+							<h3 class="main-footer__title">RESOURCES</h3>
+							<ul class="main-footer__links">
+								<li>
+									<a href="#">Free eBooks</a>
+								</li>
+								<li>
+									<a href="#">Development Tutorial</a>
+								</li>
+								<li>
+									<a href="#">How to - Blog</a>
+								</li>
+								<li>
+									<a href="#">Youtube Playlist</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="footer__bottom bottom-footer">
+					<div class="bottom-footer__container">
+						<p class="bottom-footer__copyright text--16">Shop.co © 2000-2026, All Rights Reserved</p>
+						<ul class="bottom-footer__payment" aria-label="Accepted payment methods">
+							<li>
+								<svg width="33" height="11" viewbox="0 0 33 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M16.1111 0.185933L13.9369 10.3495H11.3078L13.4823 0.185933H16.1111ZM27.1728 6.74857L28.557 2.93181L29.3535 6.74857H27.1728ZM30.1062 10.3495H32.5381L30.416 0.185933H28.1713C27.6669 0.185933 27.2413 0.479306 27.0518 0.931592L23.1074 10.3495H25.8684L26.4165 8.83179H29.7897L30.1062 10.3495ZM23.2444 7.03101C23.2557 4.3485 19.5348 4.20085 19.5605 3.00258C19.5682 2.63747 19.916 2.25017 20.6755 2.15077C21.0528 2.10155 22.0902 2.06391 23.2682 2.60595L23.7295 0.450677C23.0968 0.220996 22.2826 0 21.2699 0C18.6714 0 16.8423 1.38163 16.8269 3.35997C16.8104 4.82298 18.1326 5.63941 19.1288 6.12579C20.153 6.62408 20.4972 6.94319 20.4927 7.38872C20.486 8.07101 19.6757 8.37146 18.9197 8.38336C17.5976 8.40427 16.8304 8.02662 16.2189 7.7416L15.7425 9.96861C16.3566 10.2507 17.4905 10.4958 18.6669 10.5084C21.4285 10.5084 23.2354 9.14382 23.2444 7.03101ZM12.3542 0.185933L8.09448 10.3495H5.31483L3.21875 2.23826C3.09136 1.73869 2.9807 1.55598 2.59372 1.34528C1.96226 1.00268 0.918402 0.68068 0 0.481237L0.0627279 0.185933H4.53636C5.10638 0.185933 5.61946 0.565517 5.74878 1.22207L6.856 7.10371L9.59191 0.185933H12.3542Z" fill="#1434CB"></path>
+								</svg>
+							</li>
+							<li>
+								<svg width="26" height="16" viewbox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M16.1226 1.677H9.25929V14.0105H16.1226V1.677Z" fill="#FF5F00"></path>
+									<path d="M9.69511 7.84375C9.69403 6.65594 9.96319 5.48346 10.4822 4.41506C11.0013 3.34665 11.7566 2.41034 12.691 1.677C11.5338 0.767478 10.1442 0.201863 8.68081 0.0447978C7.21744 -0.112267 5.7394 0.14555 4.41563 0.788793C3.09185 1.43204 1.97576 2.43475 1.19492 3.68232C0.414079 4.92988 0 6.37197 0 7.84375C0 9.31553 0.414079 10.7576 1.19492 12.0052C1.97576 13.2527 3.09185 14.2555 4.41563 14.8987C5.7394 15.542 7.21744 15.7998 8.68081 15.6427C10.1442 15.4856 11.5338 14.92 12.691 14.0105C11.7566 13.2772 11.0013 12.3408 10.4822 11.2724C9.9632 10.204 9.69404 9.03155 9.69511 7.84375Z" fill="#EB001B"></path>
+									<path d="M25.3815 7.84375C25.3816 9.31551 24.9676 10.7576 24.1868 12.0052C23.406 13.2527 22.2899 14.2554 20.9662 14.8987C19.6424 15.5419 18.1644 15.7998 16.701 15.6427C15.2377 15.4856 13.848 14.92 12.691 14.0105C13.6245 13.2764 14.3792 12.34 14.8982 11.2717C15.4171 10.2035 15.6868 9.03137 15.6868 7.84375C15.6868 6.65613 15.4171 5.48401 14.8982 4.41578C14.3792 3.34755 13.6245 2.41108 12.691 1.677C13.848 0.767477 15.2377 0.201859 16.701 0.0447958C18.1644 -0.112267 19.6424 0.145561 20.9662 0.788811C22.2899 1.43206 23.406 2.43477 24.1868 3.68234C24.9676 4.92991 25.3816 6.37199 25.3815 7.84375Z" fill="#F79E1B"></path>
+									<path d="M24.6332 12.7042V12.4517H24.735V12.4002H24.4757V12.4517H24.5776V12.7042H24.6332ZM25.1366 12.7042V12.3998H25.0571L24.9657 12.6092L24.8743 12.3998H24.7947V12.7042H24.8509V12.4745L24.9366 12.6725H24.9948L25.0805 12.474V12.7042H25.1366Z" fill="#F79E1B"></path>
+								</svg>
+							</li>
+							<li>
+								<svg width="35" height="10" viewbox="0 0 35 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.14627 0.000976297H1.45878C1.27487 0.000976297 1.11846 0.134622 1.08978 0.316091L0.00281925 7.20683C-0.018785 7.34284 0.0865276 7.4654 0.224464 7.4654H1.5075C1.69141 7.4654 1.84782 7.33175 1.8765 7.14992L2.16966 5.2914C2.19794 5.10939 2.35474 4.97592 2.53826 4.97592H3.38903C5.15938 4.97592 6.18104 4.11931 6.448 2.4219C6.5682 1.67929 6.45309 1.09579 6.1052 0.687029C5.72331 0.238448 5.04572 0.000976297 4.14627 0.000976297ZM4.45633 2.51772C4.30939 3.48198 3.57256 3.48198 2.86011 3.48198H2.45456L2.73907 1.68111C2.75596 1.57238 2.85027 1.49219 2.96031 1.49219H3.14618C3.6315 1.49219 4.08935 1.49219 4.32594 1.76875C4.46688 1.93386 4.51016 2.17897 4.45633 2.51772ZM12.1799 2.48681H10.8929C10.7832 2.48681 10.6885 2.567 10.6716 2.67592L10.6146 3.03577L10.5246 2.90539C10.246 2.50099 9.62481 2.36589 9.00468 2.36589C7.5824 2.36589 6.3678 3.44289 6.13121 4.95374C6.00827 5.70725 6.18304 6.42786 6.61058 6.93044C7.00283 7.39248 7.56404 7.58504 8.23162 7.58504C9.37748 7.58504 10.0131 6.84825 10.0131 6.84825L9.9556 7.20592C9.93396 7.34266 10.0392 7.46522 10.1764 7.46522H11.3357C11.5201 7.46522 11.6756 7.33157 11.7047 7.14973L12.4003 2.74538C12.4223 2.60991 12.3173 2.48681 12.1799 2.48681ZM10.3859 4.99137C10.2617 5.72652 9.67809 6.22003 8.93394 6.22003C8.56023 6.22003 8.26145 6.10019 8.06977 5.87309C7.87955 5.64761 7.80717 5.3265 7.86773 4.96901C7.98375 4.24005 8.57714 3.73055 9.31002 3.73055C9.67536 3.73055 9.97251 3.85183 10.1682 4.08094C10.3642 4.31241 10.4421 4.63535 10.3859 4.99137ZM17.7408 2.48663H19.0341C19.2152 2.48663 19.3209 2.68974 19.218 2.8383L14.9166 9.04643C14.8469 9.14698 14.7322 9.20681 14.6096 9.20681H13.3179C13.136 9.20681 13.0298 9.00206 13.1351 8.85314L14.4745 6.96281L13.05 2.78283C13.0007 2.63755 13.108 2.48663 13.2626 2.48663H14.5334C14.6985 2.48663 14.8442 2.595 14.8918 2.75302L15.6478 5.27758L17.4316 2.65046C17.5014 2.54791 17.6175 2.48663 17.7408 2.48663Z" fill="#253B80"></path>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M31.7633 7.20621L32.8663 0.189468C32.8832 0.0805504 32.9776 0.000363666 33.0872 0H34.3289C34.466 0 34.5713 0.122918 34.5497 0.258929L33.462 7.1493C33.4337 7.33113 33.2773 7.46478 33.093 7.46478H31.9841C31.847 7.46478 31.7417 7.34223 31.7633 7.20621ZM23.3164 0.000360768H20.6284C20.4449 0.000360768 20.2885 0.134008 20.2598 0.315477L19.1728 7.20621C19.1512 7.34223 19.2565 7.46478 19.3938 7.46478H20.773C20.9012 7.46478 21.0108 7.37132 21.0308 7.24404L21.3393 5.29079C21.3676 5.10877 21.5244 4.97531 21.7079 4.97531H22.5582C24.329 4.97531 25.3504 4.11869 25.6176 2.42128C25.7381 1.67868 25.6223 1.09518 25.2746 0.686417C24.8929 0.237835 24.2158 0.000360768 23.3164 0.000360768ZM23.6264 2.51711C23.4799 3.48137 22.743 3.48137 22.0301 3.48137H21.625L21.9099 1.6805C21.9268 1.57176 22.0203 1.49157 22.1307 1.49157H22.3166C22.8016 1.49157 23.2598 1.49157 23.4962 1.76814C23.6374 1.93324 23.6803 2.17836 23.6264 2.51711ZM31.3492 2.4862H30.0632C29.9526 2.4862 29.8588 2.56639 29.8422 2.6753L29.7853 3.03515L29.6949 2.90478C29.4163 2.50038 28.7955 2.36528 28.1753 2.36528C26.7531 2.36528 25.5388 3.44228 25.3022 4.95313C25.1797 5.70664 25.3537 6.42724 25.7812 6.92983C26.1742 7.39187 26.7347 7.58443 27.4023 7.58443C28.5481 7.58443 29.1835 6.84764 29.1835 6.84764L29.1263 7.20531C29.1046 7.34205 29.2099 7.4646 29.3479 7.4646H30.5067C30.6902 7.4646 30.8466 7.33095 30.8753 7.14912L31.5713 2.74477C31.5926 2.6093 31.4873 2.4862 31.3492 2.4862ZM29.5554 4.99076C29.432 5.72591 28.8477 6.21941 28.1033 6.21941C27.7304 6.21941 27.431 6.09958 27.2392 5.87247C27.0489 5.647 26.9775 5.32589 27.0373 4.9684C27.1539 4.23943 27.7465 3.72994 28.4794 3.72994C28.8449 3.72994 29.1419 3.85122 29.3378 4.08033C29.5345 4.3118 29.6124 4.63473 29.5554 4.99076Z" fill="#179BD7"></path>
+								</svg>
+							</li>
+							<li>
+								<svg width="27" height="12" viewbox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M4.99229 1.44499C5.30328 1.05601 5.51432 0.533719 5.45866 0C5.00341 0.0226369 4.44787 0.300343 4.12624 0.689632C3.83745 1.023 3.58184 1.56716 3.64848 2.0785C4.15952 2.12283 4.67008 1.82306 4.99229 1.44499Z" fill="#000008"></path>
+									<path d="M5.45287 2.17835C4.71072 2.13414 4.07971 2.59956 3.72529 2.59956C3.37068 2.59956 2.82796 2.20063 2.24095 2.21138C1.47693 2.2226 0.76801 2.65458 0.380302 3.34164C-0.417147 4.71609 0.169856 6.75489 0.945333 7.8743C1.32192 8.42811 1.77578 9.0379 2.3738 9.016C2.93883 8.99382 3.1603 8.65013 3.84712 8.65013C4.53343 8.65013 4.73293 9.016 5.33105 9.00491C5.95131 8.99382 6.33909 8.45083 6.71568 7.89648C7.14769 7.26516 7.32455 6.65558 7.33567 6.62211C7.32454 6.61103 6.13962 6.15646 6.12864 4.79343C6.11745 3.65215 7.05893 3.10929 7.10324 3.07562C6.57158 2.28929 5.74087 2.20063 5.45287 2.17835Z" fill="#000008"></path>
+									<path d="M11.9149 0.633805C13.528 0.633805 14.6512 1.7457 14.6512 3.36454C14.6512 4.98915 13.5049 6.10682 11.8745 6.10682H10.0885V8.94701H8.79817V0.633803L11.9149 0.633805ZM10.0885 5.02371H11.5691C12.6926 5.02371 13.332 4.41887 13.332 3.37031C13.332 2.32187 12.6926 1.7227 11.5749 1.7227H10.0885V5.02371Z" fill="#000008"></path>
+									<path d="M14.9883 7.22448C14.9883 6.16437 15.8006 5.51341 17.241 5.43274L18.9001 5.33484V4.86823C18.9001 4.19416 18.4449 3.7909 17.6846 3.7909C16.9643 3.7909 16.5149 4.13649 16.4056 4.6781H15.2304C15.2995 3.58343 16.2327 2.7769 17.7306 2.7769C19.1997 2.7769 20.1386 3.55465 20.1386 4.77022V8.94699H18.9461V7.95033H18.9174C18.566 8.6244 17.7997 9.05067 17.0048 9.05067C15.818 9.05067 14.9883 8.31326 14.9883 7.22448ZM18.9001 6.6772V6.19904L17.4079 6.29116C16.6647 6.34306 16.2442 6.67142 16.2442 7.18992C16.2442 7.71987 16.6821 8.06557 17.3504 8.06557C18.2202 8.06557 18.9001 7.46639 18.9001 6.6772Z" fill="#000008"></path>
+									<path d="M21.2645 11.1766V10.1683C21.3566 10.1913 21.5639 10.1913 21.6677 10.1913C22.2438 10.1913 22.5549 9.94943 22.7449 9.32726C22.7449 9.3157 22.8545 8.95855 22.8545 8.95277L20.6654 2.88636H22.0133L23.5459 7.81787H23.5688L25.1014 2.88636H26.4149L24.1448 9.2638C23.6266 10.733 23.0274 11.2053 21.7715 11.2053C21.6677 11.2053 21.3566 11.1938 21.2645 11.1766Z" fill="#000008"></path>
+								</svg>
+							</li>
+							<li>
+								<svg width="29" height="12" viewbox="0 0 29 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M13.3296 8.75346H12.2811V0.595211H15.0606C15.765 0.595211 16.3657 0.830021 16.8572 1.29964C17.3595 1.76926 17.6107 2.34263 17.6107 3.01975C17.6107 3.71326 17.3595 4.28663 16.8572 4.75079C16.3712 5.21494 15.7705 5.44429 15.0606 5.44429H13.3296V8.75346ZM13.3296 1.59998V4.44499H15.0824C15.4974 4.44499 15.8469 4.30301 16.12 4.02452C16.3985 3.74602 16.5404 3.40746 16.5404 3.02521C16.5404 2.64842 16.3985 2.31533 16.12 2.03683C15.8469 1.74741 15.5029 1.60544 15.0824 1.60544H13.3296V1.59998Z" fill="#3C4043"></path>
+									<path d="M20.3519 2.98699C21.1273 2.98699 21.7389 3.19449 22.1866 3.6095C22.6344 4.02452 22.8583 4.59243 22.8583 5.31324V8.75346H21.859V7.97804H21.8153C21.3839 8.61694 20.8051 8.93366 20.0843 8.93366C19.4672 8.93366 18.9539 8.75346 18.5389 8.3876C18.1239 8.02173 17.9164 7.56849 17.9164 7.02243C17.9164 6.44359 18.1348 5.9849 18.5717 5.64634C19.0085 5.30231 19.5928 5.13303 20.3191 5.13303C20.9416 5.13303 21.4549 5.24771 21.8535 5.47706V5.23678C21.8535 4.87092 21.7116 4.56512 21.4221 4.30847C21.1327 4.05182 20.7942 3.92622 20.4065 3.92622C19.8222 3.92622 19.358 4.17195 19.0195 4.66888L18.0966 4.09004C18.6045 3.35285 19.358 2.98699 20.3519 2.98699ZM18.9976 7.03881C18.9976 7.31184 19.1123 7.54119 19.3471 7.72139C19.5764 7.90159 19.8495 7.99443 20.1607 7.99443C20.6031 7.99443 20.9962 7.83061 21.3402 7.50297C21.6843 7.17532 21.859 6.79308 21.859 6.35076C21.5314 6.09411 21.0781 5.96306 20.4938 5.96306C20.0679 5.96306 19.713 6.06681 19.429 6.26885C19.1396 6.48182 18.9976 6.73847 18.9976 7.03881Z" fill="#3C4043"></path>
+									<path d="M28.5593 3.16724L25.0645 11.2054H23.9832L25.2829 8.39311L22.9785 3.16724H24.1198L25.7798 7.17538H25.8016L27.418 3.16724H28.5593Z" fill="#3C4043"></path>
+									<path d="M9.1592 4.78355C9.1592 4.44172 9.12862 4.11462 9.07183 3.80009H4.6771V5.60211L7.20812 5.60265C7.10545 6.20224 6.77508 6.71336 6.26888 7.0541V8.22323H7.77548C8.65519 7.40905 9.1592 6.20551 9.1592 4.78355Z" fill="#4285F4"></path>
+									<path d="M6.26942 7.05416C5.85004 7.33702 5.30998 7.50248 4.67818 7.50248C3.45773 7.50248 2.42239 6.6801 2.05161 5.57158H0.497511V6.7773C1.26746 8.3052 2.84996 9.35365 4.67818 9.35365C5.94178 9.35365 7.00333 8.93809 7.77601 8.22274L6.26942 7.05416Z" fill="#34A853"></path>
+									<path d="M1.90522 4.67706C1.90522 4.3658 1.9571 4.06492 2.05156 3.78206V2.57634H0.497464C0.179109 3.20814 0 3.9213 0 4.67706C0 5.43282 0.179655 6.14598 0.497464 6.77778L2.05156 5.57206C1.9571 5.2892 1.90522 4.98832 1.90522 4.67706Z" fill="#FABB05"></path>
+									<path d="M4.67818 1.85117C5.36786 1.85117 5.98546 2.08871 6.4731 2.55287L7.80823 1.21882C6.99732 0.463612 5.94014 0 4.67818 0C2.8505 0 1.26742 1.04844 0.497464 2.57634L2.05156 3.78206C2.42234 2.67354 3.45773 1.85117 4.67818 1.85117Z" fill="#E94235"></path>
+								</svg>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</footer>
 		</div>
 	</body>
