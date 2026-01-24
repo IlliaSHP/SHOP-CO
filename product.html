@@ -9,10 +9,11 @@
 		<link rel="preload" href="./assets/fonts/integral-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>product</title>
-		<link rel="modulepreload" crossorigin href="./js/common.min.js?v=1769200699282">
-		<script type="module" crossorigin="" src="./js/main.min.js?v=1769200699282"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1769200699282">
-		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1769200699282">
+		<script type="module" crossorigin="" src="./js/product.min.js?v=1769279870603"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1769279870603">
+		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1769279870603">
+		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1769279870603">
+		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1769279870603">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -101,7 +102,130 @@
 				</header>
 			</div>
 			<main class="page">
-				<div data-fls-product="" class="product"></div>
+				<section data-fls-sliderproductdesctription="" data-fls-watcher="navigator" class="product">
+					<div class="breadcrumb__container breadcrumb">
+						<nav data-fls-breadcrumb="" class="product__breadcrumb breadcrumb" aria-label="Breadcrumb">
+							<ol class="breadcrumb__list">
+								<li class="breadcrumb__item">
+									<a href="index.html" class="breadcrumb__link">Home</a>
+								</li>
+								<li class="breadcrumb__item">
+									<a href="product.html" class="breadcrumb__link">Shop</a>
+								</li>
+								<li class="breadcrumb__item">
+									<span class="breadcrumb__current">Shopping Cart</span>
+								</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="product__container">
+						<div class="product__slider product-sliders">
+							<div class="product-sliders__thumbs thumbs-product-sliders">
+								<div class="thumbs-product-sliders__swiper swiper">
+									<div class="thumbs-product-sliders__wrapper swiper-wrapper">
+										<div class="thumbs-product-sliders__slide swiper-slide">
+											<picture>
+												<img alt="clothes" src="./assets/img/product/9/1.webp">
+											</picture>
+										</div>
+										<div class="thumbs-product-sliders__slide swiper-slide">
+											<picture>
+												<img alt="clothes" src="./assets/img/product/9/2.webp">
+											</picture>
+										</div>
+										<div class="thumbs-product-sliders__slide thumbs-product-sliders__slide--cover swiper-slide">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/product/9/3-600.webp" type="image/webp">
+												<img alt="clothes" src="./assets/img/product/9/3.webp">
+											</picture>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div data-fls-slider="" class="product-sliders__slider swiper">
+								<div class="product-sliders__wrapper swiper-wrapper">
+									<div class="product-sliders__slide swiper-slide">
+										<picture>
+											<img alt="clothes" src="./assets/img/product/9/1.webp">
+										</picture>
+									</div>
+									<div class="product-sliders__slide swiper-slide">
+										<picture>
+											<img alt="clothes" src="./assets/img/product/9/2.webp">
+										</picture>
+									</div>
+									<div class="product-sliders__slide product-sliders__slide--cover swiper-slide">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/product/9/3-600.webp" type="image/webp">
+											<img alt="clothes" src="./assets/img/product/9/3.webp">
+										</picture>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="product__content content-product">
+							<div class="content-product__top">
+								<h2 class="content-product__title title title--40">One Life Graphic T-shirt</h2>
+								<div data-fls-productrating="" class="content-product__rating productrating">
+									<div class="productrating__stars productrating__stars--50">
+										<img src="./assets/img/icons/Star.svg" alt="rating">
+										<img src="./assets/img/icons/Star.svg" alt="rating">
+										<img src="./assets/img/icons/Star.svg" alt="rating">
+										<img src="./assets/img/icons/Star.svg" alt="rating">
+										<img src="./assets/img/icons/Star.svg" alt="rating">
+									</div>
+									<div class="productrating__number">
+										<span>4.5/</span>
+										<span>5</span>
+									</div>
+								</div>
+								<div data-fls-priceproduct="" class="content-product__price priceproduct">
+									<span class="priceproduct__new">$260</span>
+									<del class="priceproduct__old">$300</del>
+									<span class="priceproduct__sale">-40%</span>
+								</div>
+								<div class="content-product__description text--16">
+									<p>
+										This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.
+									</p>
+								</div>
+							</div>
+							<div class="content-product__colors colors-content-product">
+								<h5 class="colors-content-product__title text--16">Select Colors</h5>
+								<div data-fls-chosecolors="" class="colors-content-product__colors chose-color">
+									<button type="button" class="chose-color__color chose-color__color--1 chose-color__color--active">
+										<img src="./assets/img/icons/check.svg" alt="check">
+									</button>
+									<button type="button" class="chose-color__color chose-color__color--2">
+										<img src="./assets/img/icons/check.svg" alt="check">
+									</button>
+									<button type="button" class="chose-color__color chose-color__color--3">
+										<img src="./assets/img/icons/check.svg" alt="check">
+									</button>
+								</div>
+							</div>
+							<div class="content-product__size size-content-product">
+								<h5 class="size-content-product__title text--16">Choose Size</h5>
+								<div class="size-content-product__buttons">
+									<button type="button" data-fls-button="" class="size-content-product__button button button--size">Small</button>
+									<button type="button" data-fls-button="" class="size-content-product__button button button--size button-size--active">Medium</button>
+									<button type="button" data-fls-button="" class="size-content-product__button button button--size">Large</button>
+									<button type="button" data-fls-button="" class="size-content-product__button button button--size">X-Large</button>
+								</div>
+							</div>
+							<div class="content-product__actions actions-content-product">
+								<div data-fls-countactions="" class="ctions-content-product__count count-actions">
+									<button type="button" data-count-minus="" class="count-actions__button" aria-label="Decrease quantity"></button>
+									<div data-count-quantity="" class="count-actions__quantity" aria-label="Product quantity" contenteditable="true" role="textbox">1</div>
+									<button type="button" data-count-plus="" class="count-actions__button" aria-label="Increase quantity"></button>
+								</div>
+								<button type="button" data-fls-button="" class="actions-content-product__buy button button--second button--lite">
+									<span>Add to Cart</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<section class="footer__subscribe subscribe-footer" aria-labelledby="subscribe-heading">
