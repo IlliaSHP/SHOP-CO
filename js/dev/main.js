@@ -1,4 +1,4 @@
-import { b as bodyLockToggle, a as bodyLockStatus, u as uniqArray } from "./common.min.js";
+import { f as bodyLockToggle, h as bodyLockStatus, u as uniqArray } from "./common.min.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) return;
@@ -5663,8 +5663,8 @@ function initSliders() {
       on: {}
     });
   }
-  if (document.querySelector(".thumbs-product-sliders__swiper") && document.querySelector(".product-sliders__slider")) {
-    const thumbsSwiper = new Swiper(".thumbs-product-sliders__swiper", {
+  if (document.querySelector(".thumbs-product-gallery__swiper") && document.querySelector(".product-detail-gallery__main")) {
+    const thumbsSwiper = new Swiper(".thumbs-product-gallery__swiper", {
       // Подключаем модули слайдера
       // для конкретного случая
       modules: [Navigation, Pagination, Autoplay, Thumb],
@@ -5706,8 +5706,8 @@ function initSliders() {
         // }
       }
     });
-    new Swiper(".product-sliders__slider", {
-      modules: [Navigation, Pagination, Autoplay, Thumb, EffectFade],
+    new Swiper(".product-detail-gallery__main", {
+      modules: [Navigation, Autoplay, Thumb, EffectFade],
       thumbs: {
         swiper: thumbsSwiper
       },
@@ -5727,10 +5727,10 @@ function initSliders() {
       // 	delay: 3000,
       // 	disableOnInteraction: false,
       // },
-      pagination: {
-        el: ".product-sliders__pagination",
-        clickable: true
-      },
+      // pagination: {
+      //    el: '.product-sliders__pagination',
+      //    clickable: true,
+      // },
       //* активується правильно, але під час resize
       //* не оновлюється
       // // Активуємо булети тільки на мобільних пристроях
@@ -5744,6 +5744,8 @@ function initSliders() {
         }
       }
     });
+  } else {
+    console.log("Відсутні .thumbs-product-gallery__swiper, .product-detail-gallery__main");
   }
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
