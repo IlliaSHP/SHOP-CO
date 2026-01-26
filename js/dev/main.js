@@ -5654,7 +5654,7 @@ function initSliders() {
       },
       // Ефекти
       autoplay: {
-        delay: 7e3,
+        delay: 5e3,
         disableOnInteraction: false
       },
       // Брейкпоінти
