@@ -9,11 +9,15 @@
 		<link rel="preload" href="./assets/fonts/integral-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>product</title>
-		<script type="module" crossorigin="" src="./js/product.min.js?v=1769449483232"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1769449483232">
-		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1769449483232">
-		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1769449483232">
-		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1769449483232">
+		<script type="module" crossorigin="" src="./js/product.min.js?v=1769535023963"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1769535023963">
+		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1769535023963">
+		<link rel="modulepreload" crossorigin="" href="./js/breadcrumb.min.js?v=1769535023963">
+		<link rel="modulepreload" crossorigin="" href="./js/clients.min.js?v=1769535023963">
+		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1769535023963">
+		<link rel="stylesheet" crossorigin="" href="./css/breadcrumb.min.css?v=1769535023963">
+		<link rel="stylesheet" crossorigin="" href="./css/clients.min.css?v=1769535023963">
+		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1769535023963">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -107,13 +111,16 @@
 						<nav data-fls-breadcrumb="" class="product-detail__breadcrumb breadcrumb" aria-label="Breadcrumb">
 							<ol class="breadcrumb__list">
 								<li class="breadcrumb__item">
-									<a href="index.html" class="breadcrumb__link">Home</a>
+									<a href="index.html" class="breadcrumb__link text text--16">Home</a>
 								</li>
 								<li class="breadcrumb__item">
-									<a href="product.html" class="breadcrumb__link">Shop</a>
+									<a href="product.html" class="breadcrumb__link text text--16">Shop</a>
 								</li>
 								<li class="breadcrumb__item">
-									<span class="breadcrumb__current">Shopping Cart</span>
+									<a href="product.html" class="breadcrumb__link text text--16">Men</a>
+								</li>
+								<li class="breadcrumb__item">
+									<span class="breadcrumb__current text text--16">T-shirts</span>
 								</li>
 							</ol>
 						</nav>
@@ -184,7 +191,7 @@
 									<del class="product-price__old">$300</del>
 									<span class="product-price__sale" aria-label="40% discount">-40%</span>
 								</div>
-								<div class="content-product-detail__description text--16">
+								<div class="content-product-detail__description text text--small">
 									<p>
 										This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.
 									</p>
@@ -193,7 +200,7 @@
 							<div class="colors-content-product-detail">
 								<!-- legend problem to padding so need some wrapper -->
 								<fieldset class="content-product-detail__colors">
-									<legend class="colors-content-product-detail__title text--16">Select Colors</legend>
+									<legend class="colors-content-product-detail__title text text--small">Select Colors</legend>
 									<div data-fls-colorpicker="" class="colors-content-product-detail__options color-picker" role="radiogroup" aria-label="Available colors">
 										<input type="radio" id="color-olive" name="product-color" value="olive" class="visually-hidden" checked>
 										<label for="color-olive" class="color-picker__option color-picker__option--olive" aria-label="Olive color">
@@ -213,7 +220,7 @@
 							<div class="product-detail-size">
 								<!-- legend problem to padding so need some wrapper -->
 								<fieldset class="content-product-detail__size">
-									<legend class="product-detail-size__title text--16">Choose Size</legend>
+									<legend class="product-detail-size__title text text--small">Choose Size</legend>
 									<div class="product-detail-size__options" role="radiogroup" aria-label="Available sizes">
 										<!-- <label for="size-small" class="product-detail-size__option">Small</label> -->
 										<input type="radio" id="size-small" name="product-size" value="small" class="visually-hidden">
@@ -347,12 +354,12 @@
 														</svg>
 													</div>
 												</div>
-												<blockquote class="clients__testimonial text--16">
+												<blockquote class="clients__testimonial text text--16">
 													<p>
 														"The t-shirt exceeded my expectations! The colors are vibrant and the print quality is top-notch. Being a UI/UX designer myself, I'm quite picky about aesthetics, and this t-shirt definitely gets a thumbs up from me."
 													</p>
 												</blockquote>
-												<time class="clients__date text--16" datetime="2026-01-23">Posted on January 23, 2026</time>
+												<time class="clients__date text text--16" datetime="2026-01-23">Posted on January 23, 2026</time>
 											</article>
 											<article data-fls-clients="" class="reviews-product-info__clients clients" role="listitem">
 												<header class="clients__header">
@@ -378,12 +385,12 @@
 														</svg>
 													</div>
 												</div>
-												<blockquote class="clients__testimonial text--16">
+												<blockquote class="clients__testimonial text text--16">
 													<p>
 														"This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt."
 													</p>
 												</blockquote>
-												<time class="clients__date text--16" datetime="2026-01-20">Posted on January 20, 2026</time>
+												<time class="clients__date text text--16" datetime="2026-01-20">Posted on January 20, 2026</time>
 											</article>
 											<article data-fls-clients="" class="reviews-product-info__clients clients" role="listitem">
 												<header class="clients__header">
@@ -409,12 +416,12 @@
 														</svg>
 													</div>
 												</div>
-												<blockquote class="clients__testimonial text--16">
+												<blockquote class="clients__testimonial text text--16">
 													<p>
 														"As a UI/UX enthusiast, I value simplicity and functionality. This t-shirt not only represents those principles but also feels great to wear. It's evident that the designer poured their creativity into making this t-shirt stand out."
 													</p>
 												</blockquote>
-												<time class="clients__date text--16" datetime="2026-01-19">Posted on January 19, 2026</time>
+												<time class="clients__date text text--16" datetime="2026-01-19">Posted on January 19, 2026</time>
 											</article>
 											<article data-fls-clients="" class="reviews-product-info__clients clients" role="listitem">
 												<header class="clients__header">
@@ -440,12 +447,12 @@
 														</svg>
 													</div>
 												</div>
-												<blockquote class="clients__testimonial text--16">
+												<blockquote class="clients__testimonial text text--16">
 													<p>
 														"This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and fashion."
 													</p>
 												</blockquote>
-												<time class="clients__date text--16" datetime="2026-01-16">Posted on January 16, 2026</time>
+												<time class="clients__date text text--16" datetime="2026-01-16">Posted on January 16, 2026</time>
 											</article>
 											<article data-fls-clients="" class="reviews-product-info__clients clients" role="listitem">
 												<header class="clients__header">
@@ -472,12 +479,12 @@
 														</svg>
 													</div>
 												</div>
-												<blockquote class="clients__testimonial text--16">
+												<blockquote class="clients__testimonial text text--16">
 													<p>
 														"I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter."
 													</p>
 												</blockquote>
-												<time class="clients__date text--15" datetime="2026-01-15">Posted on January 15, 2026</time>
+												<time class="clients__date text text--16" datetime="2026-01-15">Posted on January 15, 2026</time>
 											</article>
 											<article data-fls-clients="" class="reviews-product-info__clients clients" role="listitem">
 												<header class="clients__header">
@@ -504,12 +511,12 @@
 														</svg>
 													</div>
 												</div>
-												<blockquote class="clients__testimonial text--16">
+												<blockquote class="clients__testimonial text text--16">
 													<p>
 														"I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and thoughtful layout of the design make this shirt a conversation starter."
 													</p>
 												</blockquote>
-												<time class="clients__date text--15" datetime="2026-01-15">Posted on January 15, 2026</time>
+												<time class="clients__date text text--16" datetime="2026-01-15">Posted on January 15, 2026</time>
 											</article>
 										</div>
 										<button hidden data-fls-showmore-button="" data-fls-button="" type="button" class="reviews-product-info__load-more button button--second" aria-label="Load more reviews">
@@ -666,14 +673,17 @@
 						<div class="subscribe-footer__content">
 							<h2 class="subscribe-footer__title title title--40">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
 							<form data-fls-inputicon="" class="subscribe-footer__form inputicon" action="#" method="POST">
-								<div class="inputicon__input">
-									<label for="email-input">
+								<!-- Label тепер обгортає весь wrapper -->
+								<label for="email-input" class="inputicon__wrapper">
+									<span class="inputicon__icon" aria-hidden="true">
 										<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M21 4.125H3C2.70163 4.125 2.41548 4.24353 2.2045 4.4545C1.99353 4.66548 1.875 4.95163 1.875 5.25V18C1.875 18.4973 2.07254 18.9742 2.42417 19.3258C2.77581 19.6775 3.25272 19.875 3.75 19.875H20.25C20.7473 19.875 21.2242 19.6775 21.5758 19.3258C21.9275 18.9742 22.125 18.4973 22.125 18V5.25C22.125 4.95163 22.0065 4.66548 21.7955 4.4545C21.5845 4.24353 21.2984 4.125 21 4.125ZM12 11.9738L5.89219 6.375H18.1078L12 11.9738ZM8.69906 12L4.125 16.1925V7.8075L8.69906 12ZM10.3641 13.5262L11.2397 14.3297C11.4472 14.52 11.7185 14.6255 12 14.6255C12.2815 14.6255 12.5528 14.52 12.7603 14.3297L13.6359 13.5262L18.1078 17.625H5.89219L10.3641 13.5262ZM15.3009 12L19.875 7.8075V16.1925L15.3009 12Z" fill="black" fill-opacity="0.4"></path>
 										</svg>
-									</label>
-									<input data-fls-input="" type="email" id="email-input" name="email" placeholder="Enter your email address" required aria-required="true" autocomplete="email">
-								</div>
+									</span>
+									<!-- Прихований текст для accessibility -->
+									<span class="visually-hidden">Email address</span>
+									<input data-fls-input="" type="email" id="email-input" name="email" class="inputicon__input" placeholder="Enter your email address" required aria-required="true" autocomplete="email">
+								</label>
 								<button type="submit" data-fls-button="" class="inputicon__button button button--second">
 									<span>Subscribe to Newsletter</span>
 								</button>
@@ -685,7 +695,7 @@
 					<div class="main-footer__container">
 						<div class="main-footer__brand">
 							<a data-fls-logo="" href="index.html" class="main-footer__logo logo" aria-label="Shop.co home">SHOP.CO</a>
-							<div class="main-footer__description text--16">
+							<div class="main-footer__description text text--16">
 								<p>
 									We have clothes that suits your style and which you're proud to wear. From women to men.
 								</p>
@@ -727,7 +737,7 @@
 								</li>
 							</ul>
 						</div>
-						<nav class="main-footer__column text--16" aria-label="Company links">
+						<nav class="main-footer__column text text--16" aria-label="Company links">
 							<h3 class="main-footer__title">COMPANY</h3>
 							<ul class="main-footer__links">
 								<li>
@@ -744,7 +754,7 @@
 								</li>
 							</ul>
 						</nav>
-						<nav class="main-footer__column text--16" aria-label="Help links">
+						<nav class="main-footer__column text text--16" aria-label="Help links">
 							<h3 class="main-footer__title">HELP</h3>
 							<ul class="main-footer__links">
 								<li>
@@ -761,7 +771,7 @@
 								</li>
 							</ul>
 						</nav>
-						<nav class="main-footer__column text--16" aria-label="FAQ links">
+						<nav class="main-footer__column text text--16" aria-label="FAQ links">
 							<h3 class="main-footer__title">FAQ</h3>
 							<ul class="main-footer__links">
 								<li>
@@ -778,7 +788,7 @@
 								</li>
 							</ul>
 						</nav>
-						<nav class="main-footer__column text--16" aria-label="Resources links">
+						<nav class="main-footer__column text text--16" aria-label="Resources links">
 							<h3 class="main-footer__title">RESOURCES</h3>
 							<ul class="main-footer__links">
 								<li>
@@ -799,7 +809,7 @@
 				</div>
 				<div class="footer__bottom bottom-footer">
 					<div class="bottom-footer__container">
-						<p class="bottom-footer__copyright text--16">Shop.co © 2000-2026, All Rights Reserved</p>
+						<p class="bottom-footer__copyright text text--16">Shop.co © 2000-2026, All Rights Reserved</p>
 						<ul class="bottom-footer__payment" aria-label="Accepted payment methods">
 							<li>
 								<svg width="33" height="11" viewbox="0 0 33 11" fill="none" xmlns="http://www.w3.org/2000/svg">

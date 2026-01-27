@@ -1,5 +1,6 @@
 import "./main.min.js";
-import { e as getDigFormat } from "./common.min.js";
+import "./clients.min.js";
+import { c as getDigFormat } from "./common.min.js";
 function digitsCounter() {
   const animatedCounters = /* @__PURE__ */ new Set();
   function digitsCountersInit(digitsCountersItems) {

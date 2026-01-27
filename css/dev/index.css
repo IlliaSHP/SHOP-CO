@@ -68,10 +68,10 @@
   left: calc(82% + var(--margin-inline));
 }
 
-.new-arrivals {
+.new-arrivals .productslider__container {
   position: relative;
 }
-.new-arrivals::before {
+.new-arrivals .productslider__container::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -80,8 +80,7 @@
   left: 0;
   background-color: var(--primary-10);
 }
-
-.dress-style {
+.dress-style__wrapper {
   background-color: var(--mutedGray);
 }
 .dress-style__items {
@@ -126,8 +125,8 @@
 }
 .dress-style__item:nth-child(2) img {
   right: -40%;
-  top: 20%;
-  transform: scale(1.4);
+  top: 25%;
+  transform: scale(1.5);
 }
 .dress-style__label {
   position: relative;
@@ -349,13 +348,7 @@
     right: -60%;
   }
 }
-@media (max-width: 29.99875em){
-  .block-header__button {
-    margin-top: 0.25rem;
-  }
-  .dress-style__items {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 31.24875em){
   .dress-style__item:nth-child(n) {
     grid-column: 1/-1;
   }
@@ -367,6 +360,14 @@
   .dress-style__item:nth-child(2) img {
     transform: scale(1.7);
     right: -50%;
+  }
+}
+@media (max-width: 29.99875em){
+  .block-header__button {
+    margin-top: 0.25rem;
+  }
+  .dress-style__items {
+    grid-template-columns: 1fr;
   }
   .brands__item img {
     max-width: 6.875rem;
@@ -385,6 +386,12 @@
   .advantages__label {
     font-size: 0.75rem;
   }
+  .dress-style {
+    margin-top: 0.5rem;
+  }
+  .dress-style__wrapper {
+    border-radius: 1.25rem;
+  }
   .dress-style__items {
     gap: 1rem;
   }
@@ -398,7 +405,7 @@
     padding-inline: 1.5rem;
   }
   .dress-style__item {
-    padding-block: 1rem;
+    padding-block: 1.5625rem;
   }
   .customers__top {
     padding-bottom: 1.5rem;
@@ -430,13 +437,13 @@
   .image-hero__star:nth-of-type(2) {
     width: 2.75rem;
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-inline: 1.25rem;
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-top: 2.1875rem;
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-bottom: 1.4375rem;
   }
   .dress-style__label {
@@ -475,13 +482,13 @@
   .image-hero__star:nth-of-type(2) {
     width: clamp( 2.75rem , 2.476315789475rem  +  1.3684210526vw , 3.5625rem );
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-inline: clamp( 1.25rem , 0.323684210525rem  +  4.6315789474vw , 4rem );
   }
-  .dress-style__container {
-    padding-top: clamp( 2.1875rem , 1.4506578947375rem  +  3.6842105263vw , 4.375rem );
+  .dress-style__wrapper {
+    padding-top: clamp( 2.1875rem , 1.28223684210625rem  +  4.5263157895vw , 4.875rem );
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-bottom: clamp( 1.4375rem , 0.32171052631875rem  +  5.5789473684vw , 4.75rem );
   }
   .dress-style__label {
@@ -520,7 +527,7 @@
     padding-inline: clamp( 1.5rem , 1.16763823549375rem  +  1.3636053726vw , 2.25rem );
   }
   .dress-style__item {
-    padding-block: clamp( 1rem , 0.75072867661875rem  +  1.0227040295vw , 1.5625rem );
+    padding-block: clamp( 1.5625rem , 1.25783504920625rem  +  1.2499715916vw , 2.25rem );
   }
   .customers__top {
     padding-bottom: clamp( 1.5rem , 1.0568509806625rem  +  1.8181404968vw , 2.5rem );
@@ -530,11 +537,17 @@
   }
 }
 @media (width > 24.37375em) and (width <= 61.99875em){
+  .dress-style {
+    margin-top: clamp( 0.5rem , 0.1760963455125rem  +  1.3289036545vw , 1rem );
+  }
+  .dress-style__wrapper {
+    border-radius: clamp( 1.25rem , 0.4402408637875rem  +  3.3222591362vw , 2.5rem );
+  }
   .brands__list {
     padding-block: clamp( 1.25rem , 0.27828903654375rem  +  3.9867109635vw , 2.75rem );
   }
 }
-@media (min-width: 29.99875em) and (max-width: 47.99875em){
+@media (min-width: 31.24875em) and (max-width: 47.99875em){
   .dress-style__item:nth-child(n) {
     grid-column: auto/span 1;
   }
@@ -584,6 +597,12 @@
   }
 }
 @media (width > 61.99875em){
+  .dress-style {
+    margin-top: 1rem;
+  }
+  .dress-style__wrapper {
+    border-radius: 2.5rem;
+  }
   .brands__list {
     padding-block: 2.75rem;
   }
@@ -629,13 +648,13 @@
   .image-hero__star:nth-of-type(2) {
     width: 3.5625rem;
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-inline: 4rem;
   }
-  .dress-style__container {
-    padding-top: 4.375rem;
+  .dress-style__wrapper {
+    padding-top: 4.875rem;
   }
-  .dress-style__container {
+  .dress-style__wrapper {
     padding-bottom: 4.75rem;
   }
   .dress-style__items {
@@ -651,7 +670,7 @@
     padding-inline: 2.25rem;
   }
   .dress-style__item {
-    padding-block: 1.5625rem;
+    padding-block: 2.25rem;
   }
   .dress-style__label {
     font-size: 2.25rem;
