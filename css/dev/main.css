@@ -178,6 +178,7 @@ legend {
   --primary-30: rgba(0, 0, 0, .3);
   --primary-20: rgba(0, 0, 0, .2);
   --primary-10: rgba(0, 0, 0, .1);
+  --primary-04: rgba(0, 0, 0, .04);
   --lite: #fff;
   --mutedGray: #F0F0F0;
   --mutedGray-80: rgba(206, 205, 205, 0.8);
@@ -612,9 +613,9 @@ textarea.input {
   width: 100%;
 }
 .button--third {
-  padding-block: calc(0.8125rem + clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem));
-  padding-inline: calc(1.25rem + clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem) * 2);
-  font-size: calc(0.875rem + clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem));
+  font-size: 0.875rem;
+  padding-inline: 1.25rem;
+  padding-block: 0.78125rem;
   background-color: var(--mutedGray);
   color: var(--primary-60);
   cursor: pointer;
@@ -1139,6 +1140,9 @@ input:checked + .button--third {
 }@media (max-width: 47.99875em) {
   .text {
     line-height: 1.25; /* 20/16 */
+  }
+  .alert-banner__container {
+    padding-block: 0.625rem;
   }
   .alert-banner__text {
     font-size: 0.75rem;

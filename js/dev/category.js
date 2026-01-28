@@ -119,122 +119,228 @@ function spollers() {
   }
 }
 window.addEventListener("load", spollers);
-class DynamicAdapt {
-  constructor() {
-    this.type = "max";
+class PriceRangeSlider {
+  constructor(element) {
+    this.container = element;
+    this.minInput = this.container.querySelector(".filter-price__input--min");
+    this.maxInput = this.container.querySelector(".filter-price__input--max");
+    this.progress = this.container.querySelector(".filter-price__progress");
+    this.track = this.container.querySelector(".filter-price__track");
+    const values = this.container.querySelectorAll(".filter-price__value");
+    this.minValue = values[0];
+    this.maxValue = values[1];
+    if (!this.minValue) {
+      this.minValue = this.container.querySelector('output[for="price-min"]');
+    }
+    if (!this.maxValue) {
+      this.maxValue = this.container.querySelector('output[for="price-max"]');
+    }
+    if (!this.minInput || !this.maxInput) {
+      console.error("Price range inputs not found!");
+      return;
+    }
     this.init();
   }
   init() {
-    this.objects = [];
-    this.daClassname = "--dynamic";
-    this.nodes = [...document.querySelectorAll("[data-fls-dynamic]")];
-    this.nodes.forEach((node) => {
-      const data = node.dataset.flsDynamic.trim();
-      const dataArray = data.split(`,`);
-      const object = {};
-      object.element = node;
-      object.parent = node.parentNode;
-      object.destinationParent = dataArray[3] ? node.closest(dataArray[3].trim()) || document : document;
-      dataArray[3] ? dataArray[3].trim() : null;
-      const objectSelector = dataArray[0] ? dataArray[0].trim() : null;
-      if (objectSelector) {
-        const foundDestination = object.destinationParent.querySelector(objectSelector);
-        if (foundDestination) {
-          object.destination = foundDestination;
+    this.updateProgress();
+    this.updateValues();
+    this.bindEvents();
+  }
+  bindEvents() {
+    this.minInput.addEventListener("input", () => this.handleMinInput());
+    this.maxInput.addEventListener("input", () => this.handleMaxInput());
+    this.minInput.addEventListener("change", () => this.handleMinInput());
+    this.maxInput.addEventListener("change", () => this.handleMaxInput());
+    this.track.addEventListener("click", (e) => this.handleTrackClick(e));
+  }
+  handleMinInput() {
+    let minVal = parseInt(this.minInput.value);
+    let maxVal = parseInt(this.maxInput.value);
+    if (minVal > maxVal - 10) {
+      this.minInput.value = maxVal - 10;
+      minVal = maxVal - 10;
+    }
+    this.updateProgress();
+    this.updateValues();
+  }
+  handleMaxInput() {
+    let minVal = parseInt(this.minInput.value);
+    let maxVal = parseInt(this.maxInput.value);
+    if (maxVal < minVal + 10) {
+      this.maxInput.value = minVal + 10;
+      maxVal = minVal + 10;
+    }
+    this.updateProgress();
+    this.updateValues();
+  }
+  handleTrackClick(e) {
+    const trackRect = this.track.getBoundingClientRect();
+    const clickPosition = (e.clientX - trackRect.left) / trackRect.width;
+    const min = parseInt(this.minInput.min);
+    const max = parseInt(this.minInput.max);
+    const clickValue = Math.round(min + (max - min) * clickPosition);
+    const currentMin = parseInt(this.minInput.value);
+    const currentMax = parseInt(this.maxInput.value);
+    const distanceToMin = Math.abs(clickValue - currentMin);
+    const distanceToMax = Math.abs(clickValue - currentMax);
+    if (distanceToMin < distanceToMax) {
+      if (clickValue < currentMax - 10) {
+        this.minInput.value = clickValue;
+        this.handleMinInput();
+      }
+    } else {
+      if (clickValue > currentMin + 10) {
+        this.maxInput.value = clickValue;
+        this.handleMaxInput();
+      }
+    }
+  }
+  updateProgress() {
+    const min = parseInt(this.minInput.min);
+    const max = parseInt(this.minInput.max);
+    const minVal = parseInt(this.minInput.value);
+    const maxVal = parseInt(this.maxInput.value);
+    const leftPercent = (minVal - min) / (max - min) * 100;
+    const rightPercent = (maxVal - min) / (max - min) * 100;
+    this.progress.style.left = `${leftPercent}%`;
+    this.progress.style.right = `${100 - rightPercent}%`;
+  }
+  updateValues() {
+    const minVal = parseInt(this.minInput.value);
+    const maxVal = parseInt(this.maxInput.value);
+    if (this.minValue) {
+      this.minValue.textContent = `$${minVal}`;
+    } else {
+      console.warn("minValue element not found");
+    }
+    if (this.maxValue) {
+      this.maxValue.textContent = `$${maxVal}`;
+    } else {
+      console.warn("maxValue element not found");
+    }
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const priceRanges = document.querySelectorAll("[data-fls-pricerange]");
+  priceRanges.forEach((range) => {
+    new PriceRangeSlider(range);
+  });
+});
+class MobileFilters {
+  constructor() {
+    this.filterPanel = document.querySelector(".filters-panel");
+    this.openBtn = document.querySelector("[data-open-filter]");
+    this.closeBtn = document.querySelector(".filters-panel__close");
+    this.overlay = null;
+    this.touchStartY = 0;
+    this.touchEndY = 0;
+    this.touchStartX = 0;
+    this.isDragging = false;
+    this.isScrolling = false;
+    this.startScrollTop = 0;
+    if (!this.filterPanel) return;
+    this.init();
+  }
+  init() {
+    this.createOverlay();
+    this.bindEvents();
+  }
+  createOverlay() {
+    this.overlay = document.createElement("div");
+    this.overlay.className = "filters-overlay";
+    document.body.appendChild(this.overlay);
+  }
+  bindEvents() {
+    if (this.openBtn) {
+      this.openBtn.addEventListener("click", () => this.open());
+    }
+    if (this.closeBtn) {
+      this.closeBtn.addEventListener("click", () => this.close());
+    }
+    this.overlay.addEventListener("click", () => this.close());
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && this.filterPanel.classList.contains("--active")) {
+        this.close();
+      }
+    });
+    this.bindSwipeGestures();
+    this.filterPanel.addEventListener("touchmove", (e) => {
+      if (this.filterPanel.classList.contains("--active")) {
+        e.stopPropagation();
+      }
+    }, { passive: true });
+  }
+  bindSwipeGestures() {
+    this.filterPanel.addEventListener("touchstart", (e) => {
+      this.touchStartY = e.touches[0].clientY;
+      this.touchStartX = e.touches[0].clientX;
+      this.startScrollTop = this.filterPanel.scrollTop;
+      this.isDragging = false;
+      this.isScrolling = false;
+    }, { passive: true });
+    this.filterPanel.addEventListener("touchmove", (e) => {
+      if (this.isScrolling) return;
+      const currentY = e.touches[0].clientY;
+      const currentX = e.touches[0].clientX;
+      const diffY = currentY - this.touchStartY;
+      const diffX = Math.abs(currentX - this.touchStartX);
+      if (!this.isDragging && Math.abs(diffY) > 10) {
+        if (diffY > 0 && this.filterPanel.scrollTop === 0) {
+          this.isDragging = true;
+        } else {
+          this.isScrolling = true;
+          return;
         }
       }
-      object.breakpoint = dataArray[1] ? dataArray[1].trim() : `767.98`;
-      object.place = dataArray[2] ? dataArray[2].trim() : `last`;
-      object.index = this.indexInParent(object.parent, object.element);
-      this.objects.push(object);
-    });
-    this.arraySort(this.objects);
-    this.mediaQueries = this.objects.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint / 16}em),${breakpoint}`).filter((item, index, self) => self.indexOf(item) === index);
-    this.mediaQueries.forEach((media) => {
-      const mediaSplit = media.split(",");
-      const matchMedia = window.matchMedia(mediaSplit[0]);
-      const mediaBreakpoint = mediaSplit[1];
-      const objectsFilter = this.objects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
-      matchMedia.addEventListener("change", () => {
-        this.mediaHandler(matchMedia, objectsFilter);
-      });
-      this.mediaHandler(matchMedia, objectsFilter);
-    });
+      if (diffX > Math.abs(diffY)) {
+        this.isScrolling = true;
+        return;
+      }
+      if (this.isDragging && diffY > 0 && window.innerWidth <= 550) {
+        const resistance = 0.6;
+        const translateY = diffY * resistance;
+        this.filterPanel.style.transform = `translateY(${translateY}px)`;
+        this.filterPanel.style.transition = "none";
+      }
+    }, { passive: true });
+    this.filterPanel.addEventListener("touchend", (e) => {
+      if (!this.isDragging) {
+        this.isScrolling = false;
+        return;
+      }
+      this.touchEndY = e.changedTouches[0].clientY;
+      const swipeDistance = this.touchEndY - this.touchStartY;
+      this.filterPanel.style.transition = "";
+      if (swipeDistance > 100 && window.innerWidth <= 550) {
+        this.close();
+      } else {
+        this.filterPanel.style.transform = "";
+      }
+      this.isDragging = false;
+      this.isScrolling = false;
+    }, { passive: true });
   }
-  mediaHandler(matchMedia, objects) {
-    if (matchMedia.matches) {
-      objects.forEach((object) => {
-        if (object.destination) {
-          this.moveTo(object.place, object.element, object.destination);
-        }
-      });
-    } else {
-      objects.forEach(({ parent, element, index }) => {
-        if (element.classList.contains(this.daClassname)) {
-          this.moveBack(parent, element, index);
-        }
-      });
+  open() {
+    this.filterPanel.classList.add("--active");
+    this.overlay.classList.add("--active");
+    document.body.classList.add("filters-open");
+    this.filterPanel.setAttribute("aria-hidden", "false");
+    if (this.closeBtn) {
+      this.closeBtn.focus();
     }
   }
-  moveTo(place, element, destination) {
-    element.classList.add(this.daClassname);
-    const index = place === "last" || place === "first" ? place : parseInt(place, 10);
-    if (index === "last" || index >= destination.children.length) {
-      destination.append(element);
-    } else if (index === "first") {
-      destination.prepend(element);
-    } else {
-      destination.children[index].before(element);
-    }
-  }
-  moveBack(parent, element, index) {
-    element.classList.remove(this.daClassname);
-    if (parent.children[index] !== void 0) {
-      parent.children[index].before(element);
-    } else {
-      parent.append(element);
-    }
-  }
-  indexInParent(parent, element) {
-    return [...parent.children].indexOf(element);
-  }
-  arraySort(arr) {
-    if (this.type === "min") {
-      arr.sort((a, b) => {
-        if (a.breakpoint === b.breakpoint) {
-          if (a.place === b.place) {
-            return 0;
-          }
-          if (a.place === "first" || b.place === "last") {
-            return -1;
-          }
-          if (a.place === "last" || b.place === "first") {
-            return 1;
-          }
-          return 0;
-        }
-        return a.breakpoint - b.breakpoint;
-      });
-    } else {
-      arr.sort((a, b) => {
-        if (a.breakpoint === b.breakpoint) {
-          if (a.place === b.place) {
-            return 0;
-          }
-          if (a.place === "first" || b.place === "last") {
-            return 1;
-          }
-          if (a.place === "last" || b.place === "first") {
-            return -1;
-          }
-          return 0;
-        }
-        return b.breakpoint - a.breakpoint;
-      });
-      return;
+  close() {
+    this.filterPanel.classList.remove("--active");
+    this.overlay.classList.remove("--active");
+    document.body.classList.remove("filters-open");
+    this.filterPanel.style.transform = "";
+    this.filterPanel.style.transition = "";
+    this.filterPanel.setAttribute("aria-hidden", "true");
+    if (this.openBtn) {
+      this.openBtn.focus();
     }
   }
 }
-if (document.querySelector("[data-fls-dynamic]")) {
-  window.addEventListener("load", () => window.flsDynamic = new DynamicAdapt());
-}
+document.addEventListener("DOMContentLoaded", () => {
+  window.mobileFilters = new MobileFilters();
+});

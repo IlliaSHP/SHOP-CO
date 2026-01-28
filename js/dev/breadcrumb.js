@@ -429,6 +429,7 @@ class SelectConstructor {
     const selectItemScroll = this.getSelectElement(selectItem, this.selectClasses.classSelectOptionsScroll).selectElement;
     const customMaxHeightValue = +originalSelect.dataset.flsSelectScroll ? `${+originalSelect.dataset.flsSelectScroll}px` : ``;
     const selectOptionsPosMargin = +originalSelect.dataset.flsSelectOptionsMargin ? +originalSelect.dataset.flsSelectOptionsMargin : 10;
+    const isViewportConstrained = originalSelect.hasAttribute("data-select-viewport");
     if (!selectItem.classList.contains(this.selectClasses.classSelectOpen)) {
       selectOptions.hidden = false;
       const selectItemScrollHeight = selectItemScroll.offsetHeight ? selectItemScroll.offsetHeight : parseInt(window.getComputedStyle(selectItemScroll).getPropertyValue("max-height"));
@@ -439,22 +440,80 @@ class SelectConstructor {
       const selectItemPos = selectItem.getBoundingClientRect().top;
       const selectItemTotal = selectItemPos + selectOptionsHeight + selectItemHeight + selectOptionsScrollHeight;
       const selectItemResult = window.innerHeight - (selectItemTotal + selectOptionsPosMargin);
-      if (selectItemResult < 0) {
-        const newMaxHeightValue = selectOptionsHeight + selectItemResult;
-        if (newMaxHeightValue < 100) {
-          selectItem.classList.add("select--show-top");
-          selectItemScroll.style.maxHeight = selectItemPos < selectOptionsHeight ? `${selectItemPos - (selectOptionsHeight - selectItemPos)}px` : customMaxHeightValue;
-        } else {
-          selectItem.classList.remove("select--show-top");
-          selectItemScroll.style.maxHeight = `${newMaxHeightValue}px`;
+      if (isViewportConstrained) {
+        this.constrainToViewport(selectItem, selectOptions, selectItemScroll, selectOptionsPosMargin, customMaxHeightValue);
+      } else {
+        if (selectItemResult < 0) {
+          const newMaxHeightValue = selectOptionsHeight + selectItemResult;
+          if (newMaxHeightValue < 100) {
+            selectItem.classList.add("select--show-top");
+            selectItemScroll.style.maxHeight = selectItemPos < selectOptionsHeight ? `${selectItemPos - (selectOptionsHeight - selectItemPos)}px` : customMaxHeightValue;
+          } else {
+            selectItem.classList.remove("select--show-top");
+            selectItemScroll.style.maxHeight = `${newMaxHeightValue}px`;
+          }
         }
       }
     } else {
       setTimeout(() => {
         selectItem.classList.remove("select--show-top");
         selectItemScroll.style.maxHeight = customMaxHeightValue;
+        if (isViewportConstrained) {
+          selectOptions.style.left = "";
+          selectOptions.style.transform = "";
+        }
       }, +originalSelect.dataset.flsSelectSpeed);
     }
+  }
+  //! =============================================================
+  // Новий метод для обмеження в межах viewport
+  constrainToViewport(selectItem, selectOptions, selectItemScroll, margin, customMaxHeight) {
+    const selectRect = selectItem.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportMargin = 20;
+    selectOptions.hidden = false;
+    selectOptions.style.visibility = "hidden";
+    const optionsHeight = selectOptions.offsetHeight;
+    const optionsWidth = selectOptions.offsetWidth;
+    selectOptions.style.visibility = "";
+    selectOptions.hidden = true;
+    const spaceBelow = viewportHeight - selectRect.bottom - viewportMargin;
+    const spaceAbove = selectRect.top - viewportMargin;
+    let showTop = false;
+    let maxHeight = customMaxHeight;
+    if (spaceBelow >= optionsHeight) {
+      showTop = false;
+      maxHeight = customMaxHeight;
+    } else if (spaceAbove >= optionsHeight) {
+      showTop = true;
+      maxHeight = customMaxHeight;
+    } else {
+      if (spaceBelow > spaceAbove) {
+        showTop = false;
+        maxHeight = `${Math.max(spaceBelow, 100)}px`;
+      } else {
+        showTop = true;
+        maxHeight = `${Math.max(spaceAbove, 100)}px`;
+      }
+    }
+    if (showTop) {
+      selectItem.classList.add("select--show-top");
+    } else {
+      selectItem.classList.remove("select--show-top");
+    }
+    selectItemScroll.style.maxHeight = maxHeight;
+    const selectCenter = selectRect.left + selectRect.width / 2;
+    const optionsHalfWidth = optionsWidth / 2;
+    let finalLeftViewport = selectCenter - optionsHalfWidth;
+    if (finalLeftViewport < viewportMargin) {
+      finalLeftViewport = viewportMargin;
+    } else if (finalLeftViewport + optionsWidth > viewportWidth - viewportMargin) {
+      finalLeftViewport = viewportWidth - viewportMargin - optionsWidth;
+    }
+    const leftRelativeToSelect = finalLeftViewport - selectRect.left;
+    selectOptions.style.setProperty("left", `${leftRelativeToSelect}px`);
+    selectOptions.style.setProperty("transform", "none");
   }
   // Обробник кліку на пункт списку
   optionAction(selectItem, originalSelect, optionItem) {

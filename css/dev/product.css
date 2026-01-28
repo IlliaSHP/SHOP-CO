@@ -150,6 +150,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+.product-detail-size__options .button--third {
+  padding-block: calc(0.8125rem + clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem));
+  padding-inline: calc(1.25rem + clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem) * 2);
+  font-size: calc(0.875rem + clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem));
+}
 .product-detail-actions {
   display: flex;
   flex-wrap: wrap;
