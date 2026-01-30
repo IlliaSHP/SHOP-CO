@@ -1,6 +1,7 @@
 import "./main.min.js";
 import "./clients.min.js";
 import { c as getDigFormat } from "./common.min.js";
+import "./productcard.min.js";
 function digitsCounter() {
   const animatedCounters = /* @__PURE__ */ new Set();
   function digitsCountersInit(digitsCountersItems) {
