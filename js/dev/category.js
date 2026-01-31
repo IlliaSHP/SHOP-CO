@@ -1,6 +1,6 @@
 import "./main.min.js";
 import "./colorpicker.min.js";
-import { d as dataMediaQueries, e as slideToggle, b as slideUp } from "./common.min.js";
+import { d as dataMediaQueries, h as slideToggle, b as slideUp } from "./common.min.js";
 import "./productcard.min.js";
 import "./breadcrumb.min.js";
 function spollers() {

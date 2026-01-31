@@ -5384,7 +5384,7 @@ function initSliders() {
       // автоматично приховує pagination коли всі слайди видимі
       // Ефекти
       autoplay: {
-        delay: 7e3,
+        delay: 5e3,
         disableOnInteraction: false
       },
       // Пагінація
@@ -5534,7 +5534,7 @@ function initSliders() {
       // автоматично приховує pagination коли всі слайди видимі
       // Ефекти
       autoplay: {
-        delay: 1e4,
+        delay: 8e3,
         disableOnInteraction: false
       },
       // Пагінація
@@ -5637,7 +5637,7 @@ function initSliders() {
     const thumbsSwiper = new Swiper(".thumbs-product-gallery__swiper", {
       // Подключаем модули слайдера
       // для конкретного случая
-      modules: [Navigation, Pagination, Autoplay, Thumb],
+      modules: [Navigation, Pagination, Thumb],
       //effect: 'fade',
       observer: true,
       watchOverflow: true,
@@ -5693,10 +5693,10 @@ function initSliders() {
       fadeEffect: {
         crossFade: true
       },
-      // autoplay: {
-      // 	delay: 3000,
-      // 	disableOnInteraction: false,
-      // },
+      autoplay: {
+        delay: 4e3,
+        disableOnInteraction: false
+      },
       // pagination: {
       //    el: '.product-sliders__pagination',
       //    clickable: true,

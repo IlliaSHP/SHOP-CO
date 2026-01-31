@@ -15,9 +15,10 @@
   --scale-mobileSmall: clamp(6.25e-8rem, calc(-0.07594417941875rem + 0.2531580213vw), 0.125rem);
   --scale-minTemplate: clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem);
   --scale-minWidth: clamp(6.25e-8rem, calc(-0.04210517960625rem + 0.2105262105vw), 0.125rem);
-  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.19122230314375rem + 0.3983903032vw), 0.125rem);
+  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.37106249805rem + 0.6249606275vw), 0.125rem);
   --scale-tablet-minWidth: clamp(6.25e-8rem, calc(-0.05952548885625rem + 0.2976277568vw), 0.125rem);
   --scale-mobile-minWidth: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
+  --scale-mobile-mobileSmall: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
   --scale-mobileSmall-minWidth: clamp(6.25e-8rem, calc(-0.25003106639375rem + 1.2501556445vw), 0.125rem);
   --scale-tablet-minTemplate: clamp(6.25e-8rem, calc(-0.08097581063125rem + 0.3322257475vw), 0.125rem);
   --scale-mobile-minTemplate: clamp(6.25e-8rem, calc(-0.12896151323125rem + 0.5291002646vw), 0.125rem);
@@ -120,9 +121,10 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   --scale-mobileSmall: clamp(6.25e-8rem, calc(-0.07594417941875rem + 0.2531580213vw), 0.125rem);
   --scale-minTemplate: clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem);
   --scale-minWidth: clamp(6.25e-8rem, calc(-0.04210517960625rem + 0.2105262105vw), 0.125rem);
-  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.19122230314375rem + 0.3983903032vw), 0.125rem);
+  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.37106249805rem + 0.6249606275vw), 0.125rem);
   --scale-tablet-minWidth: clamp(6.25e-8rem, calc(-0.05952548885625rem + 0.2976277568vw), 0.125rem);
   --scale-mobile-minWidth: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
+  --scale-mobile-mobileSmall: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
   --scale-mobileSmall-minWidth: clamp(6.25e-8rem, calc(-0.25003106639375rem + 1.2501556445vw), 0.125rem);
   --scale-tablet-minTemplate: clamp(6.25e-8rem, calc(-0.08097581063125rem + 0.3322257475vw), 0.125rem);
   --scale-mobile-minTemplate: clamp(6.25e-8rem, calc(-0.12896151323125rem + 0.5291002646vw), 0.125rem);
@@ -219,9 +221,10 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   --scale-mobileSmall: clamp(6.25e-8rem, calc(-0.07594417941875rem + 0.2531580213vw), 0.125rem);
   --scale-minTemplate: clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem);
   --scale-minWidth: clamp(6.25e-8rem, calc(-0.04210517960625rem + 0.2105262105vw), 0.125rem);
-  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.19122230314375rem + 0.3983903032vw), 0.125rem);
+  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.37106249805rem + 0.6249606275vw), 0.125rem);
   --scale-tablet-minWidth: clamp(6.25e-8rem, calc(-0.05952548885625rem + 0.2976277568vw), 0.125rem);
   --scale-mobile-minWidth: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
+  --scale-mobile-mobileSmall: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
   --scale-mobileSmall-minWidth: clamp(6.25e-8rem, calc(-0.25003106639375rem + 1.2501556445vw), 0.125rem);
   --scale-tablet-minTemplate: clamp(6.25e-8rem, calc(-0.08097581063125rem + 0.3322257475vw), 0.125rem);
   --scale-mobile-minTemplate: clamp(6.25e-8rem, calc(-0.12896151323125rem + 0.5291002646vw), 0.125rem);
@@ -302,7 +305,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   --mainSlider-Base-Width: 74%;
   --thumbSlider-Base-Width: 26%;
 }
-.product-detail__container {
+.product-detail__body {
   display: flex;
   gap: var(--gapBody);
 }
@@ -343,7 +346,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
 
 .thumbs-product-gallery {
   flex: 1 1 calc(var(--thumbSlider-Base-Width) - var(--gapSlider) / 2);
-  --MinWidth-thumbsSlide: clamp(5rem, calc(0.039527027025rem + 9.009009009vw), 5.625rem);
+  --MinWidth-thumbsSlide: clamp(5rem, calc(-0.22393867924375rem + 9.4339622642vw), 5.625rem);
 }
 .thumbs-product-gallery__slide {
   display: block;
@@ -374,7 +377,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
 }
 
 .colors-content-product-detail, .product-detail-size {
-  --spaceColorsSize: clamp(0.875rem, calc(0.02576988329375rem + 1.5423371549vw), 1.25rem);
+  --spaceColorsSize: clamp(0.875rem, calc(0.009830217175rem + 1.562418624vw), 1.25rem);
   padding-block: var(--spaceColorsSize);
   border-block: 0.0625rem solid var(--primary-10);
 }
@@ -402,7 +405,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   font-size: 1rem;
 }
 .content-product-detail__rating img {
-  --starWidthDescriptionSlider: clamp(1.3125rem, calc(0.78739271116875rem + 0.9536784741vw), 1.544375rem);
+  --starWidthDescriptionSlider: clamp(1.3125rem, calc(0.7775366842875rem + 0.9660955159vw), 1.544375rem);
   --starWidth: var(--starWidthDescriptionSlider);
 }
 .content-product-detail .content-product-detail__price {
@@ -449,9 +452,10 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   --scale-mobileSmall: clamp(6.25e-8rem, calc(-0.07594417941875rem + 0.2531580213vw), 0.125rem);
   --scale-minTemplate: clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem);
   --scale-minWidth: clamp(6.25e-8rem, calc(-0.04210517960625rem + 0.2105262105vw), 0.125rem);
-  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.19122230314375rem + 0.3983903032vw), 0.125rem);
+  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.37106249805rem + 0.6249606275vw), 0.125rem);
   --scale-tablet-minWidth: clamp(6.25e-8rem, calc(-0.05952548885625rem + 0.2976277568vw), 0.125rem);
   --scale-mobile-minWidth: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
+  --scale-mobile-mobileSmall: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
   --scale-mobileSmall-minWidth: clamp(6.25e-8rem, calc(-0.25003106639375rem + 1.2501556445vw), 0.125rem);
   --scale-tablet-minTemplate: clamp(6.25e-8rem, calc(-0.08097581063125rem + 0.3322257475vw), 0.125rem);
   --scale-mobile-minTemplate: clamp(6.25e-8rem, calc(-0.12896151323125rem + 0.5291002646vw), 0.125rem);
@@ -572,9 +576,10 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   --scale-mobileSmall: clamp(6.25e-8rem, calc(-0.07594417941875rem + 0.2531580213vw), 0.125rem);
   --scale-minTemplate: clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem);
   --scale-minWidth: clamp(6.25e-8rem, calc(-0.04210517960625rem + 0.2105262105vw), 0.125rem);
-  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.19122230314375rem + 0.3983903032vw), 0.125rem);
+  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.37106249805rem + 0.6249606275vw), 0.125rem);
   --scale-tablet-minWidth: clamp(6.25e-8rem, calc(-0.05952548885625rem + 0.2976277568vw), 0.125rem);
   --scale-mobile-minWidth: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
+  --scale-mobile-mobileSmall: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
   --scale-mobileSmall-minWidth: clamp(6.25e-8rem, calc(-0.25003106639375rem + 1.2501556445vw), 0.125rem);
   --scale-tablet-minTemplate: clamp(6.25e-8rem, calc(-0.08097581063125rem + 0.3322257475vw), 0.125rem);
   --scale-mobile-minTemplate: clamp(6.25e-8rem, calc(-0.12896151323125rem + 0.5291002646vw), 0.125rem);
@@ -762,7 +767,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
 .also-like .productslider__slider {
   padding-bottom: 0;
 }
-@media (width <= 55.06125em){
+@media (width <= 55.37375em){
   .content-product-detail__title {
     font-size: 2.1875rem;
   }
@@ -770,7 +775,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
     font-size: 1.75rem;
   }
 }
-@media (max-width: 55.06125em) and (width <= 24.37375em){
+@media (max-width: 55.37375em) and (width <= 24.37375em){
   .content-product-detail__title {
     font-size: 1.5rem;
   }
@@ -778,8 +783,8 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
     font-size: 1.5rem;
   }
 }
-@media (max-width: 55.06125em){
-  .product-detail__container {
+@media (max-width: 55.37375em){
+  .product-detail__body {
     flex-wrap: wrap;
   }
   .product-detail__content {
@@ -850,7 +855,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   }
 }
 @media (width <= 24.37375em){
-  .product-detail__container {
+  .product-detail__body {
     padding-bottom: 1.875rem;
   }
   .product-detail-size__options {
@@ -919,7 +924,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
     --thumbSlider-Base-Width: 24%;
   }
 }
-@media (min-width: 55.06125em) and (width <= 55.06125em){
+@media (min-width: 55.37375em) and (width <= 55.37375em){
   .product-detail-gallery {
     max-height: 26.875rem;
   }
@@ -929,12 +934,12 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
     max-height: 6.9375rem;
   }
 }
-@media (max-width: 55.06125em) and (width > 55.06125em){
+@media (max-width: 55.37375em) and (width > 55.37375em){
   .content-product-detail__title {
     font-size: 2.5rem;
   }
 }
-@media (max-width: 55.06125em) and (width > 47.99875em){
+@media (max-width: 55.37375em) and (width > 47.99875em){
   .content-product-detail .content-product-detail__price .product-price__new, .content-product-detail .content-product-detail__price .product-price__old {
     font-size: 2rem;
   }
@@ -965,7 +970,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   }
 }
 @media (width > 24.37375em) and (width <= 47.99875em){
-  .product-detail__container {
+  .product-detail__body {
     padding-bottom: clamp( 1.875rem , 0.19849867725rem  +  6.8783068783vw , 3.5rem );
   }
   .header-reviews-product-info__title h2 {
@@ -994,7 +999,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   }
 }
 @media (width > 47.99875em){
-  .product-detail__container {
+  .product-detail__body {
     padding-bottom: 3.5rem;
   }
   .header-reviews-product-info__title h2 {
@@ -1006,30 +1011,30 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (width > 55.06125em) and (width <= 79.375em){
+@media (width > 55.37375em) and (width <= 79.375em){
   .content-product-detail__title {
-    font-size: clamp( 2.1875rem , 1.6213465888625rem  +  1.0282247699vw , 2.4375rem );
+    font-size: clamp( 2.1875rem , 1.61072014478125rem  +  1.041612416vw , 2.4375rem );
   }
   .content-product-detail .content-product-detail__price .product-price__new, .content-product-detail .content-product-detail__price .product-price__old {
-    font-size: clamp( 1.75rem , 1.1838465888625rem  +  1.0282247699vw , 2rem );
+    font-size: clamp( 1.75rem , 1.17322014478125rem  +  1.041612416vw , 2rem );
   }
 }
-@media (min-width: 55.06125em) and (width > 61.99875em){
+@media (min-width: 55.37375em) and (width > 61.99875em){
   .product-detail-gallery {
     max-height: 33.125rem;
   }
 }
-@media (min-width: 55.06125em) and (width > 55.06125em) and (width <= 61.99875em){
+@media (min-width: 55.37375em) and (width > 55.37375em) and (width <= 61.99875em){
   .product-detail-gallery {
-    max-height: clamp( 26.875rem , -22.72972972973125rem  +  90.0900900901vw , 33.125rem );
+    max-height: clamp( 26.875rem , -25.36438679245rem  +  94.3396226415vw , 33.125rem );
   }
 }
-@media (max-width: 55.06125em) and (width > 24.37375em) and (width <= 55.06125em){
+@media (max-width: 55.37375em) and (width > 24.37375em) and (width <= 55.37375em){
   .content-product-detail__title {
-    font-size: clamp( 1.5rem , 0.70574338085625rem  +  3.2586558045vw , 2.5rem );
+    font-size: clamp( 1.5rem , 0.71375rem  +  3.2258064516vw , 2.5rem );
   }
 }
-@media (max-width: 55.06125em) and (width > 24.37375em) and (width <= 47.99875em){
+@media (max-width: 55.37375em) and (width > 24.37375em) and (width <= 47.99875em){
   .content-product-detail .content-product-detail__price .product-price__new, .content-product-detail .content-product-detail__price .product-price__old {
     font-size: clamp( 1.5rem , 0.98415343915625rem  +  2.1164021164vw , 2rem );
   }

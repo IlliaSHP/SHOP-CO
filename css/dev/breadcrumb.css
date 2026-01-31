@@ -15,9 +15,10 @@
   --scale-mobileSmall: clamp(6.25e-8rem, calc(-0.07594417941875rem + 0.2531580213vw), 0.125rem);
   --scale-minTemplate: clamp(6.25e-8rem, calc(-0.05539353721875rem + 0.2272674485vw), 0.125rem);
   --scale-minWidth: clamp(6.25e-8rem, calc(-0.04210517960625rem + 0.2105262105vw), 0.125rem);
-  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.19122230314375rem + 0.3983903032vw), 0.125rem);
+  --scale-cartRebuild: clamp(6.25e-8rem, calc(-0.37106249805rem + 0.6249606275vw), 0.125rem);
   --scale-tablet-minWidth: clamp(6.25e-8rem, calc(-0.05952548885625rem + 0.2976277568vw), 0.125rem);
   --scale-mobile-minWidth: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
+  --scale-mobile-mobileSmall: clamp(6.25e-8rem, calc(-0.0892895932875rem + 0.4464482789vw), 0.125rem);
   --scale-mobileSmall-minWidth: clamp(6.25e-8rem, calc(-0.25003106639375rem + 1.2501556445vw), 0.125rem);
   --scale-tablet-minTemplate: clamp(6.25e-8rem, calc(-0.08097581063125rem + 0.3322257475vw), 0.125rem);
   --scale-mobile-minTemplate: clamp(6.25e-8rem, calc(-0.12896151323125rem + 0.5291002646vw), 0.125rem);
@@ -121,32 +122,32 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   transition: text-decoration-color 0.2s, color 0.2s;
 }
 @media (width <= 47.99875em){
-  .breadcrumb__container {
+  .breadcrumb {
     padding-bottom: 1.5625rem;
   }
 }
 @media (width <= 24.37375em){
-  .breadcrumb__container {
+  .breadcrumb {
     padding-top: 1.25rem;
   }
 }
 @media (width > 24.37375em) and (width <= 61.99875em){
-  .breadcrumb__container {
+  .breadcrumb {
     padding-top: clamp( 1.25rem , 1.08804817275625rem  +  0.6644518272vw , 1.5rem );
   }
 }
 @media (width > 47.99875em) and (width <= 79.375em){
-  .breadcrumb__container {
+  .breadcrumb {
     padding-bottom: clamp( 1.5625rem , 0.5107764630875rem  +  2.191147763vw , 2.25rem );
   }
 }
 @media (width > 61.99875em){
-  .breadcrumb__container {
+  .breadcrumb {
     padding-top: 1.5rem;
   }
 }
 @media (width > 79.375em){
-  .breadcrumb__container {
+  .breadcrumb {
     padding-bottom: 2.25rem;
   }
 }
