@@ -1,4 +1,3 @@
-import { i as bodyLockToggle, j as bodyLockStatus, u as uniqArray } from "./common.min.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) return;
@@ -28,289 +27,49 @@ import { i as bodyLockToggle, j as bodyLockStatus, u as uniqArray } from "./comm
     fetch(link.href, fetchOpts);
   }
 })();
-function menuInit() {
-  document.addEventListener("click", function(e) {
-    if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
-      bodyLockToggle();
-      document.documentElement.toggleAttribute("data-fls-menu-open");
-    }
-  });
-}
-document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
-document.addEventListener("DOMContentLoaded", function() {
-  const searchInput = document.querySelector(".inputicon-search__input");
-  const searchIcon = document.querySelector(".inputicon-search__search-icon");
-  const clearButton = document.querySelector(".inputicon-search__clear");
-  const html = document.documentElement;
-  const dropdown = document.querySelector(".menu__item--dropdown");
-  if (dropdown) {
-    const dropdownBtn = dropdown.querySelector(".menu__link");
-    if (dropdownBtn) {
-      let touchDevice = false;
-      dropdown.addEventListener("touchstart", function() {
-        touchDevice = true;
-      }, { once: true });
-      dropdownBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        const isExpanded = dropdown.getAttribute("aria-expanded") === "true";
-        dropdown.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-      });
-      dropdown.addEventListener("mouseenter", function() {
-        if (!touchDevice) {
-          this.setAttribute("aria-expanded", "true");
-        }
-      });
-      dropdown.addEventListener("mouseleave", function() {
-        if (!touchDevice) {
-          this.setAttribute("aria-expanded", "false");
-        }
-      });
-      dropdown.addEventListener("focusout", function(e) {
-        if (!dropdown.contains(e.relatedTarget)) {
-          dropdown.setAttribute("aria-expanded", "false");
-        }
-      });
-      document.addEventListener("click", function(e) {
-        if (!dropdown.contains(e.target)) {
-          dropdown.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
-  }
-  function initAlertBanner() {
-    const sitetopbar = document.querySelector(".site-topbar");
-    const closeBtn = document.querySelector(".alert-banner__close");
-    if (sitetopbar && closeBtn) {
-      closeBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        html.setAttribute("site-topbar-anim", "");
-        document.documentElement.style.setProperty("--alertBannerHeight", "0px");
-        setTimeout(() => {
-          sitetopbar.classList.add("site-topbar--hidden");
-        }, 300);
-      });
-    }
-  }
-  const isSmallScreen = () => window.innerWidth < 479.98;
-  function openSearch() {
-    if (!isSmallScreen()) return;
-    html.setAttribute("search-active", "");
-    searchInput.focus();
-  }
-  function closeSearch() {
-    html.removeAttribute("search-active");
-    if (clearButton) {
-      clearButton.classList.remove("close-btn--active");
-    }
-  }
-  function updateClearButtonState() {
-    if (!clearButton || !searchInput) return;
-    if (searchInput.value.length > 0) {
-      clearButton.classList.add("close-btn--active");
-    } else {
-      clearButton.classList.remove("close-btn--active");
-    }
-  }
-  initAlertBanner();
-  if (searchIcon) {
-    searchIcon.addEventListener("click", function(e) {
-      e.preventDefault();
-      if (isSmallScreen()) {
-        if (html.hasAttribute("search-active")) {
-          if (searchInput.value === "") {
-            closeSearch();
+document.addEventListener("DOMContentLoaded", () => {
+  const viewPassButtons = document.querySelectorAll(".form-comp__viewpass");
+  if (viewPassButtons.length > 0) {
+    viewPassButtons.forEach((btn) => {
+      btn.addEventListener("click", function() {
+        const wrapper = this.closest(".form-comp__pass-wrapper");
+        const input = wrapper ? wrapper.querySelector(".form-comp__input") : null;
+        if (input) {
+          if (input.type === "password") {
+            input.type = "text";
+            this.classList.add("form-comp__viewpass--active");
           } else {
-            searchInput.form.submit();
+            input.type = "password";
+            this.classList.remove("form-comp__viewpass--active");
           }
-        } else {
-          openSearch();
         }
-      } else {
-        searchInput.form.submit();
+      });
+    });
+  }
+  const photoInput = document.getElementById("user-photo");
+  const photoPreviewContainer = document.getElementById("photo-preview");
+  const removeBtn = document.getElementById("remove-photo-btn");
+  if (photoInput && photoPreviewContainer && removeBtn) {
+    const defaultContent = photoPreviewContainer.innerHTML;
+    photoInput.addEventListener("change", function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          photoPreviewContainer.innerHTML = "";
+          const newImg = document.createElement("img");
+          newImg.src = e.target.result;
+          newImg.alt = "User photo";
+          photoPreviewContainer.appendChild(newImg);
+          removeBtn.removeAttribute("disabled");
+        };
+        reader.readAsDataURL(file);
       }
-      updateClearButtonState();
     });
-  }
-  if (clearButton && searchInput) {
-    clearButton.addEventListener("click", function(e) {
-      e.preventDefault();
-      searchInput.value = "";
-      searchInput.focus();
-      searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+    removeBtn.addEventListener("click", function() {
+      photoInput.value = "";
+      photoPreviewContainer.innerHTML = defaultContent;
+      this.setAttribute("disabled", "true");
     });
-    searchInput.addEventListener("input", function() {
-      updateClearButtonState();
-    });
-    updateClearButtonState();
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape" && html.hasAttribute("search-active")) {
-      closeSearch();
-    }
-  });
-  document.addEventListener("click", function(e) {
-    const searchForm = document.querySelector(".inputicon-search");
-    if (!searchForm) return;
-    if (html.hasAttribute("search-active") && !searchForm.contains(e.target) && e.target !== searchIcon) {
-      closeSearch();
-    }
-  });
-  const alertBanner = document.querySelector(".alert-banner");
-  if (alertBanner) {
-    const resizeObserver = new ResizeObserver(() => {
-      const height = alertBanner.offsetHeight;
-      document.documentElement.style.setProperty("--alertBannerHeight", `${height}px`);
-    });
-    resizeObserver.observe(alertBanner);
   }
 });
-function headerScroll() {
-  const header = document.querySelector("[data-fls-header-scroll]");
-  const headerShow = header.hasAttribute("data-fls-header-scroll-show");
-  const headerShowTimer = header.dataset.flsHeaderScrollShow ? header.dataset.flsHeaderScrollShow : 500;
-  const startPoint = header.dataset.flsHeaderScroll ? header.dataset.flsHeaderScroll : 1;
-  let scrollDirection = 0;
-  let timer;
-  document.addEventListener("scroll", function(e) {
-    const scrollTop = window.scrollY;
-    clearTimeout(timer);
-    if (scrollTop >= startPoint) {
-      !header.classList.contains("--header-scroll") ? header.classList.add("--header-scroll") : null;
-      if (headerShow) {
-        if (scrollTop > scrollDirection) {
-          header.classList.contains("--header-show") ? header.classList.remove("--header-show") : null;
-        } else {
-          !header.classList.contains("--header-show") ? header.classList.add("--header-show") : null;
-        }
-        timer = setTimeout(() => {
-          !header.classList.contains("--header-show") ? header.classList.add("--header-show") : null;
-        }, headerShowTimer);
-      }
-    } else {
-      header.classList.contains("--header-scroll") ? header.classList.remove("--header-scroll") : null;
-      if (headerShow) {
-        header.classList.contains("--header-show") ? header.classList.remove("--header-show") : null;
-      }
-    }
-    scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
-  });
-}
-document.querySelector("[data-fls-header-scroll]") ? window.addEventListener("load", headerScroll) : null;
-class ScrollWatcher {
-  constructor(props) {
-    let defaultConfig = {
-      logging: true
-    };
-    this.config = Object.assign(defaultConfig, props);
-    this.observer;
-    !document.documentElement.hasAttribute("data-fls-watch") ? this.scrollWatcherRun() : null;
-  }
-  // Оновлюємо конструктор
-  scrollWatcherUpdate() {
-    this.scrollWatcherRun();
-  }
-  // Запускаємо конструктор
-  scrollWatcherRun() {
-    document.documentElement.setAttribute("data-fls-watch", "");
-    this.scrollWatcherConstructor(document.querySelectorAll("[data-fls-watcher]"));
-  }
-  // Конструктор спостерігачів
-  scrollWatcherConstructor(items) {
-    if (items.length) {
-      let uniqParams = uniqArray(Array.from(items).map(function(item) {
-        if (item.dataset.flsWatcher === "navigator" && !item.dataset.flsWatcherThreshold) {
-          let valueOfThreshold;
-          if (item.clientHeight > 2) {
-            valueOfThreshold = window.innerHeight / 2 / (item.clientHeight - 1);
-            if (valueOfThreshold > 1) {
-              valueOfThreshold = 1;
-            }
-          } else {
-            valueOfThreshold = 1;
-          }
-          item.setAttribute(
-            "data-fls-watcher-threshold",
-            valueOfThreshold.toFixed(2)
-          );
-        }
-        return `${item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null}|${item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px"}|${item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0}`;
-      }));
-      uniqParams.forEach((uniqParam) => {
-        let uniqParamArray = uniqParam.split("|");
-        let paramsWatch = {
-          root: uniqParamArray[0],
-          margin: uniqParamArray[1],
-          threshold: uniqParamArray[2]
-        };
-        let groupItems = Array.from(items).filter(function(item) {
-          let watchRoot = item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null;
-          let watchMargin = item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px";
-          let watchThreshold = item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0;
-          if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) {
-            return item;
-          }
-        });
-        let configWatcher = this.getScrollWatcherConfig(paramsWatch);
-        this.scrollWatcherInit(groupItems, configWatcher);
-      });
-    }
-  }
-  // Функція створення налаштувань
-  getScrollWatcherConfig(paramsWatch) {
-    let configWatcher = {};
-    if (document.querySelector(paramsWatch.root)) {
-      configWatcher.root = document.querySelector(paramsWatch.root);
-    } else if (paramsWatch.root !== "null") ;
-    configWatcher.rootMargin = paramsWatch.margin;
-    if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
-      return;
-    }
-    if (paramsWatch.threshold === "prx") {
-      paramsWatch.threshold = [];
-      for (let i = 0; i <= 1; i += 5e-3) {
-        paramsWatch.threshold.push(i);
-      }
-    } else {
-      paramsWatch.threshold = paramsWatch.threshold.split(",");
-    }
-    configWatcher.threshold = paramsWatch.threshold;
-    return configWatcher;
-  }
-  // Функція створення нового спостерігача зі своїми налаштуваннями
-  scrollWatcherCreate(configWatcher) {
-    this.observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        this.scrollWatcherCallback(entry, observer);
-      });
-    }, configWatcher);
-  }
-  // Функція ініціалізації спостерігача зі своїми налаштуваннями
-  scrollWatcherInit(items, configWatcher) {
-    this.scrollWatcherCreate(configWatcher);
-    items.forEach((item) => this.observer.observe(item));
-  }
-  // Функція обробки базових дій точок спрацьовування
-  scrollWatcherIntersecting(entry, targetElement) {
-    if (entry.isIntersecting) {
-      !targetElement.classList.contains("--watcher-view") ? targetElement.classList.add("--watcher-view") : null;
-    } else {
-      targetElement.classList.contains("--watcher-view") ? targetElement.classList.remove("--watcher-view") : null;
-    }
-  }
-  // Функція відключення стеження за об'єктом
-  scrollWatcherOff(targetElement, observer) {
-    observer.unobserve(targetElement);
-  }
-  // Функція обробки спостереження
-  scrollWatcherCallback(entry, observer) {
-    const targetElement = entry.target;
-    this.scrollWatcherIntersecting(entry, targetElement);
-    targetElement.hasAttribute("data-fls-watcher-once") && entry.isIntersecting ? this.scrollWatcherOff(targetElement, observer) : null;
-    document.dispatchEvent(new CustomEvent("watcherCallback", {
-      detail: {
-        entry
-      }
-    }));
-  }
-}
-document.querySelector("[data-fls-watcher]") ? window.addEventListener("load", () => new ScrollWatcher({})) : null;
