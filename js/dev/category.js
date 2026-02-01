@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 class MobileFilters {
   constructor() {
     this.filterPanel = document.querySelector(".filters-panel");
+    this.sidebar = document.querySelector(".catalog__sidebar");
     this.openBtn = document.querySelector("[data-open-filter]");
     this.closeBtn = document.querySelector(".filters-panel__close");
     this.overlay = null;
@@ -244,8 +245,19 @@ class MobileFilters {
     this.init();
   }
   init() {
+    this.originalParent = this.filterPanel.parentElement;
+    this.mobileMedia = window.matchMedia("(max-width: 991.98px)");
+    this.handleMediaChange(this.mobileMedia);
+    this.mobileMedia.addEventListener("change", (e) => this.handleMediaChange(e));
     this.createOverlay();
     this.bindEvents();
+  }
+  handleMediaChange(mediaQueryList) {
+    if (mediaQueryList.matches) {
+      document.body.appendChild(this.filterPanel);
+    } else {
+      this.originalParent.insertBefore(this.filterPanel, this.originalParent.firstChild);
+    }
   }
   createOverlay() {
     this.overlay = document.createElement("div");
