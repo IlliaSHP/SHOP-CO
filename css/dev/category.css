@@ -631,7 +631,7 @@ $r-cartRebuild-cartRebuildMobile: 'cartRebuild-cartRebuildMobile';
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.filters-open .filters-overlay {
+.filters-overlay.--active {
   opacity: 1;
   visibility: visible;
 }
@@ -860,7 +860,7 @@ body.filters-open {
     left: 0;
     width: 100%;
     max-width: 25rem;
-    height: 100%;
+    height: 100vh;
     z-index: 99;
     transform: translateX(-100%);
     transition: transform 0.5s ease;
