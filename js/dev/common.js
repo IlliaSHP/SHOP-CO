@@ -144,6 +144,9 @@ let bodyLock = (delay = 500) => {
     }, delay);
   }
 };
+function getDigFormat(item, sepp = " ") {
+  return item.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, `$1${sepp}`);
+}
 function uniqArray(array) {
   return array.filter((item, index, self) => self.indexOf(item) === index);
 }
@@ -198,17 +201,16 @@ const gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) =>
 addTouchAttr();
 addLoadedAttr();
 export {
-  addLoadedAttr as a,
-  bodyUnlock as b,
-  getHash as c,
+  setHash as a,
+  slideUp as b,
+  getDigFormat as c,
   dataMediaQueries as d,
-  slideUp as e,
-  slideDown as f,
-  gotoBlock as g,
-  setHash as h,
-  bodyLock as i,
+  bodyUnlock as e,
+  gotoBlock as f,
+  getHash as g,
+  slideToggle as h,
+  bodyLockToggle as i,
   bodyLockStatus as j,
-  bodyLockToggle as k,
-  slideToggle as s,
+  slideDown as s,
   uniqArray as u
 };
