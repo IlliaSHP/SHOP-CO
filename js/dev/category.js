@@ -310,7 +310,7 @@ class MobileFilters {
         this.isScrolling = true;
         return;
       }
-      if (this.isDragging && diffY > 0 && window.innerWidth <= 550) {
+      if (this.isDragging && diffY > 0 && window.innerWidth <= 680.98) {
         const resistance = 0.6;
         const translateY = diffY * resistance;
         this.filterPanel.style.transform = `translateY(${translateY}px)`;
@@ -325,7 +325,7 @@ class MobileFilters {
       this.touchEndY = e.changedTouches[0].clientY;
       const swipeDistance = this.touchEndY - this.touchStartY;
       this.filterPanel.style.transition = "";
-      if (swipeDistance > 100 && window.innerWidth <= 550) {
+      if (swipeDistance > 100 && window.innerWidth <= 680.98) {
         this.close();
       } else {
         this.filterPanel.style.transform = "";
